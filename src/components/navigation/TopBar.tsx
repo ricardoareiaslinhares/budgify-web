@@ -2,80 +2,70 @@
 import {
   AppBar as MuiAppBar,
   IconButton,
-  styled,
   Toolbar,
   Typography,
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ArrowBack as ArrowBackIcon } from "@mui/icons-material";
 import { useContext } from "react";
 import { SideBarContext } from "@/context/SideBarContext";
+import { useTheme } from "@mui/material/styles";
 
-type Props = {
-  drawerWidth: number;
-};
-export const TopBar = ({ drawerWidth }: Props) => {
-  const goBack = () => {};
+export const TopBar = () => {
+  const theme = useTheme()
   
   const {openSideBar, setOpenSideBar} = useContext(SideBarContext)
 
-  const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })<{ open?: boolean }>(({ theme, open }) => ({
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: open ? `calc(100% - ${drawerWidth}px)` : "100%",
-    marginLeft: open ? `${drawerWidth}px` : 0,
-  }));
+  const handlerOpenSideBar = () => {
+    if (openSideBar) return
+    setOpenSideBar(prev => !prev)
+  }
 
   return (
-    <AppBar position="fixed" open={openSideBar}>
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          onClick={() => setOpenSideBar(prev => !prev)}
-          edge="start"
-          sx={{ mr: 4, ...(openSideBar && { display: "none" }) }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Box
-          sx={{
-            display: "flex",
-            flex: 1,
-            flexDirection: "row",
-            columnGap: 2,
-            alignItems: "center",
-          }}
-        >
-          <Box
+      <MuiAppBar
+        sx={{
+          transition: theme.transitions.create(["margin", "width"], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+          width: "100%",
+          position: "fixed",
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            onClick={handlerOpenSideBar}
+            edge="start"
             sx={{
-             // display: location.pathname === "/" ? "hidden" : "flex",
+              cursor: openSideBar ? "default" : "pointer",
+              opacity: openSideBar ? 0 : 1,
+              transition:
+                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+              transform: openSideBar ? "scale(0.95)" : "scale(1)",
+              pointerEvents: openSideBar ? "none" : "auto",
             }}
           >
-            <IconButton
-              onClick={goBack}
-              sx={{
-               // opacity: location.pathname === "/" ? 0 : 1,
-               // transition: "opacity 0.3s ease-in-out",
-                //pointerEvents: location.pathname === "/" ? "none" : "auto",
-              }}
-            >
-              <ArrowBackIcon fontSize="large" sx={{ color: "black" }} />
+            <MenuIcon />
+          </IconButton>
+          <Box
+            sx={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "row",
+              columnGap: 2,
+              alignItems: "center",
+            }}
+          >
+
+            <IconButton onClick={() => {}}>
+              <Typography variant="h6" noWrap>
+                Budgify
+              </Typography>
             </IconButton>
           </Box>
-
-          <IconButton onClick={() => {}}>
-            <Typography variant="h6" noWrap>
-              Budgify
-            </Typography>
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </MuiAppBar>
   );
 };
 

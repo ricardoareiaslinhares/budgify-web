@@ -26,7 +26,7 @@ export const Navigation = ({children}: NavigationProps) => {
       <SideBar drawerWidth={DRAWER_WIDTH}>
         <Main>
 
-        <div>{children}</div>
+        {children} {/* // Delete div here */}
         <Box
           sx={{
               bgcolor: "#ddc750",
