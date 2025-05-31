@@ -24,19 +24,26 @@ const login = async (loginData: {
   const dataForMock = {
     ...loginData,
     token: "abc123xyz456",
-    creation_date: "2025-05-30T10:00:00Z"
-    
-  }
+    creation_date: "2025-05-30T10:00:00Z",
+  };
   console.log("dataForMock =>", dataForMock); // Delete
   console.log(`${API_URL}${route}`);
+  try {
+    const response = await axios({
+      method: "POST",
+      url: `${API_URL}${route}`,
+      data: dataForMock,
+    });
 
-  const response = await axios({
-    method: "POST",
-    url: `${API_URL}${route}`,
-    data: dataForMock,
-  });
-  console.log("response =>", response.data); // Delete
-  
+//    localStorage.setItem("authToken", response.data.id) // the real on
 
-  return response.data;
+// fake
+     if (response.data) localStorage.setItem("authToken", 7)
+
+    console.log("response =>", response.data); // Delete
+    return response.data;
+  } catch (error) {
+    console.log("Error on useLogin", error);
+    throw error;
+  }
 };

@@ -75,6 +75,20 @@
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "9c5c",
+      "email": "linhares.areias@gmail.com",
+      "password": "",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "4e1b",
+      "email": "linhares.areias@gmail.com",
+      "password": "",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
     }
   ],
   "logout": {

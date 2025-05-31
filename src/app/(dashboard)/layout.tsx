@@ -1,6 +1,5 @@
-import { AppDialog } from "@/components/AppDialog";
 import { Navigation } from "@/components/navigation/Navigation";
-import { AppDialogProvider } from "@/context/AppDialogContext";
+import { ProtectedRoutes } from "@/components/ProtectedRoutes";
 
 export default function DashboardLayout({
   children,
@@ -8,11 +7,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <ProtectedRoutes>
     <Navigation>
 
       {children}
     </Navigation>
-    </>
+    </ProtectedRoutes>
   );
 }
