@@ -30,10 +30,11 @@ import { DRAWER_WIDTH, PAGE_ROUTES, TOP_BAR_HEIGHT } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
 
 type SideBarProps = {
+  userName: string
   children?: React.ReactNode;
 };
 
-export const SideBar = ({ children }: SideBarProps) => {
+export const SideBar = ({ children, userName }: SideBarProps) => {
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
 
@@ -66,7 +67,7 @@ export const SideBar = ({ children }: SideBarProps) => {
         anchor="left"
         open={openSideBar}
       >
-        <DrawerHeader theme={theme} setOpenSideBar={setOpenSideBar} />
+        <DrawerHeader theme={theme} setOpenSideBar={setOpenSideBar} userName={userName} />
         <List
           sx={{
             display: "flex",
@@ -143,9 +144,10 @@ export const SideBar = ({ children }: SideBarProps) => {
 
 type DrawerHeaderProps = {
   theme: Theme;
+  userName:string;
   setOpenSideBar: React.Dispatch<SetStateAction<boolean>>;
 };
-const DrawerHeader = ({ theme, setOpenSideBar }: DrawerHeaderProps) => {
+const DrawerHeader = ({ theme, setOpenSideBar,userName }: DrawerHeaderProps) => {
   return (
     <Box
       sx={{
@@ -158,7 +160,7 @@ const DrawerHeader = ({ theme, setOpenSideBar }: DrawerHeaderProps) => {
       }}
     >
       <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
-        <Avatar name="User Name" />
+        <Avatar name={userName} />
       </Box>
       <IconButton size="medium" onClick={() => setOpenSideBar((prev) => !prev)}>
         <ChevronLeftIcon />
@@ -166,7 +168,7 @@ const DrawerHeader = ({ theme, setOpenSideBar }: DrawerHeaderProps) => {
     </Box>
   );
 };
-type AvatarProps = { name: string };
+type AvatarProps = { name: string, };
 const Avatar = ({ name }: AvatarProps) => {
   return (
     <Box

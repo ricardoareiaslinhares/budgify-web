@@ -38,7 +38,7 @@ const login = async (loginData: {
 //    localStorage.setItem("authToken", response.data.id) // the real on
 
 // fake
-     if (response.data) localStorage.setItem("authToken", 7)
+     if (response.data) localStorage.setItem("authToken", "7")
 
     console.log("response =>", response.data); // Delete
     return response.data;

@@ -9,10 +9,11 @@ import { DRAWER_WIDTH, TOP_BAR_HEIGHT } from '@/constants';
 
 
 type NavigationProps = {
+  userName: string
     children: React.ReactNode
 }
 
-export const Navigation = ({children}: NavigationProps) => {
+export const Navigation = ({children, userName}: NavigationProps) => {
   return (
     <SideBarProvider>
     <Box
@@ -24,7 +25,7 @@ export const Navigation = ({children}: NavigationProps) => {
         justifyContent: "space-between",
       }}
     >
-      <SideBar>
+      <SideBar userName={userName}>
         <Main>
 
         {children}

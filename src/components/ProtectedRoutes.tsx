@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Loading } from "./Loading";
 import { LinearProgress } from "@mui/material";
+import { Navigation } from "./navigation/Navigation";
 
 type ProtectedRoutesProps = {
   children: React.ReactNode;
@@ -25,5 +26,5 @@ export const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
     return <LinearProgress/>
   }
 
-  return <>{children}</>;
+  return <Navigation userName={user?.name}>{children}</Navigation>;
 };

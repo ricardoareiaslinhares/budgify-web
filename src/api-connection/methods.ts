@@ -18,7 +18,7 @@ export const getRecords = async <T>(
 export const getRecord = async <T>(
   entity: string,
   id: number,
-  params?: string,
+  params: string
 ): Promise<T> => {
   try {
     const response = await api.get<T>(`${entity}/${id}?${params}`);

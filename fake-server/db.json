@@ -7,86 +7,93 @@
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "9b1d",
+      "id": "8965",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "9514",
+      "id": "2590",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "1e74",
+      "id": "9258",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "fb87",
-      "email": "budgify@fmail.pt",
-      "password": "123",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "ff5e",
+      "id": "d4c9",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "e8e8",
+      "id": "cf46",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "6977",
+      "id": "b994",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "bd67",
+      "id": "a95f",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "dbe3",
+      "id": "a939",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "d0ca",
+      "id": "4648",
       "email": "linhares.areias@gmail.com",
       "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "9c5c",
+      "id": "399c",
       "email": "linhares.areias@gmail.com",
-      "password": "",
+      "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     },
     {
-      "id": "4e1b",
+      "id": "113f",
       "email": "linhares.areias@gmail.com",
-      "password": "",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "b1af",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "6238",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z"
     }
@@ -123,7 +130,7 @@
       "mail": "carla@domain.com",
       "birthday": "1993-07-20",
       "genre": "female",
-      "is_active": true,
+      "is_active": false,
       "token": "token789",
       "creation_date": "2025-05-22T12:00:00Z",
       "role": "superadmin"
@@ -134,7 +141,7 @@
       "mail": "david@domain.com",
       "birthday": "1998-11-05",
       "genre": "male",
-      "is_active": true,
+      "is_active": false,
       "token": "token321",
       "creation_date": "2025-05-23T13:00:00Z",
       "role": "superadmin"
@@ -145,7 +152,7 @@
       "mail": "elisa@domain.com",
       "birthday": "1987-09-09",
       "genre": "female",
-      "is_active": true,
+      "is_active": false,
       "token": "token654",
       "creation_date": "2025-05-24T14:00:00Z",
       "role": "superadmin"
