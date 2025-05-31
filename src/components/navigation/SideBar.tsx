@@ -40,7 +40,6 @@ export const SideBar = ({ children }: SideBarProps) => {
   const router = useRouter();
   const currentPath = usePathname();
 
-  // Esta no constante tambem, corrigir TODO
   const drawerItems = [
     { label: PAGE_ROUTES.highlights.name, path: PAGE_ROUTES.highlights.path, icon: <HomeIcon /> },
     { label: PAGE_ROUTES.stats.name, path: PAGE_ROUTES.stats.path, icon: <InsightsIcon /> },
@@ -55,7 +54,6 @@ export const SideBar = ({ children }: SideBarProps) => {
       <Drawer
         sx={{
           width: `${DRAWER_WIDTH}px`,
-          //  flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: `${DRAWER_WIDTH}px`,
             borderRight: "none",
@@ -94,15 +92,10 @@ export const SideBar = ({ children }: SideBarProps) => {
                       "&.Mui-selected": {
                         backgroundColor: theme.palette.background.default,
                         color: theme.palette.primary.main,
-                        "&:hover": {
-                         // backgroundColor: theme.palette.primary.dark,
-                        },
-                        
                       },
                     }}
                     onClick={() => router.push(item.path)}
                     selected={isSelected}
-                    //disabled={isSelected}
                   >
                     <Box
                       display="flex"
@@ -123,7 +116,6 @@ export const SideBar = ({ children }: SideBarProps) => {
               );
             })}
           </Box>
-          {/* Logout related*/}
           <ListItem
             disablePadding
             sx={{

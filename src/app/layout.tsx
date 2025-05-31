@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/navigation/Navigation";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme";
+import { QueryProvider } from "@/components/QueryProvider";
+import { AppDialog } from "@/components/AppDialog";
+import { AppDialogProvider } from "@/context/AppDialogContext";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +30,14 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Navigation>{children}</Navigation>
+            <QueryProvider>
+                    <AppDialogProvider>
+
+            {children}
+      <AppDialog />
+      </AppDialogProvider>
+
+            </QueryProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

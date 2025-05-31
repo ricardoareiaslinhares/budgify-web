@@ -1,0 +1,378 @@
+{
+  "login": [
+    {
+      "email": "budgify@fmail.pt",
+      "password": "123",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "9b1d",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "9514",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "1e74",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "fb87",
+      "email": "budgify@fmail.pt",
+      "password": "123",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "ff5e",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "e8e8",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "6977",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "bd67",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "dbe3",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "d0ca",
+      "email": "linhares.areias@gmail.com",
+      "password": "tiger75red",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
+    }
+  ],
+  "logout": {
+    "status": "ok"
+  },
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Smith",
+      "mail": "alice@domain.com",
+      "birthday": "1990-01-01",
+      "genre": "female",
+      "is_active": false,
+      "token": "token123",
+      "creation_date": "2025-05-20T10:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "2",
+      "name": "Bob Johnson",
+      "mail": "bob@domain.com",
+      "birthday": "1985-02-14",
+      "genre": "male",
+      "is_active": true,
+      "token": "token456",
+      "creation_date": "2025-05-21T11:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "3",
+      "name": "Carla Mendes",
+      "mail": "carla@domain.com",
+      "birthday": "1993-07-20",
+      "genre": "female",
+      "is_active": true,
+      "token": "token789",
+      "creation_date": "2025-05-22T12:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "4",
+      "name": "David Green",
+      "mail": "david@domain.com",
+      "birthday": "1998-11-05",
+      "genre": "male",
+      "is_active": true,
+      "token": "token321",
+      "creation_date": "2025-05-23T13:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "5",
+      "name": "Elisa White",
+      "mail": "elisa@domain.com",
+      "birthday": "1987-09-09",
+      "genre": "female",
+      "is_active": true,
+      "token": "token654",
+      "creation_date": "2025-05-24T14:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "6",
+      "name": "Frank Hall",
+      "mail": "frank@domain.com",
+      "birthday": "1980-04-18",
+      "genre": "male",
+      "is_active": true,
+      "token": "token987",
+      "creation_date": "2025-05-25T15:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "7",
+      "name": "Grace Lee",
+      "mail": "grace@domain.com",
+      "birthday": "1991-06-12",
+      "genre": "female",
+      "is_active": true,
+      "token": "token000",
+      "creation_date": "2025-05-26T16:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "8",
+      "name": "Henry Adams",
+      "mail": "henry@domain.com",
+      "birthday": "1982-08-15",
+      "genre": "male",
+      "is_active": true,
+      "token": "token222",
+      "creation_date": "2025-05-27T17:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "9",
+      "name": "Isabel Cruz",
+      "mail": "isabel@domain.com",
+      "birthday": "1996-03-23",
+      "genre": "female",
+      "is_active": true,
+      "token": "token333",
+      "creation_date": "2025-05-28T18:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": "10",
+      "name": "Jack Brown",
+      "mail": "jack@domain.com",
+      "birthday": "1979-12-31",
+      "genre": "male",
+      "is_active": true,
+      "token": "token444",
+      "creation_date": "2025-05-29T19:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": 11,
+      "name": "Emma Davis",
+      "mail": "emma@domain.com",
+      "birthday": "1985-04-10",
+      "genre": "female",
+      "is_active": true,
+      "token": "token445",
+      "creation_date": "2025-05-30T10:00:00Z",
+      "role": "admin"
+    },
+    {
+      "id": 12,
+      "name": "Liam Johnson",
+      "mail": "liam@domain.com",
+      "birthday": "1992-09-15",
+      "genre": "male",
+      "is_active": false,
+      "token": "token446",
+      "creation_date": "2025-05-30T11:00:00Z",
+      "role": "editor"
+    },
+    {
+      "id": 13,
+      "name": "Olivia Martin",
+      "mail": "olivia@domain.com",
+      "birthday": "1996-03-22",
+      "genre": "female",
+      "is_active": true,
+      "token": "token447",
+      "creation_date": "2025-05-30T12:00:00Z",
+      "role": "viewer"
+    },
+    {
+      "id": 14,
+      "name": "Noah Thompson",
+      "mail": "noah@domain.com",
+      "birthday": "1988-07-09",
+      "genre": "male",
+      "is_active": true,
+      "token": "token448",
+      "creation_date": "2025-05-30T13:00:00Z",
+      "role": "editor"
+    },
+    {
+      "id": 15,
+      "name": "Ava Wilson",
+      "mail": "ava@domain.com",
+      "birthday": "1993-11-17",
+      "genre": "female",
+      "is_active": false,
+      "token": "token449",
+      "creation_date": "2025-05-30T14:00:00Z",
+      "role": "admin"
+    },
+    {
+      "id": 16,
+      "name": "William Lee",
+      "mail": "william@domain.com",
+      "birthday": "1980-08-05",
+      "genre": "male",
+      "is_active": true,
+      "token": "token450",
+      "creation_date": "2025-05-30T15:00:00Z",
+      "role": "superadmin"
+    },
+    {
+      "id": 17,
+      "name": "Sophia Harris",
+      "mail": "sophia@domain.com",
+      "birthday": "1991-01-20",
+      "genre": "female",
+      "is_active": true,
+      "token": "token451",
+      "creation_date": "2025-05-30T16:00:00Z",
+      "role": "admin"
+    },
+    {
+      "id": 18,
+      "name": "James Walker",
+      "mail": "james@domain.com",
+      "birthday": "1984-06-12",
+      "genre": "male",
+      "is_active": false,
+      "token": "token452",
+      "creation_date": "2025-05-30T17:00:00Z",
+      "role": "editor"
+    },
+    {
+      "id": 19,
+      "name": "Isabella Young",
+      "mail": "isabella@domain.com",
+      "birthday": "1997-10-03",
+      "genre": "female",
+      "is_active": true,
+      "token": "token453",
+      "creation_date": "2025-05-30T18:00:00Z",
+      "role": "viewer"
+    },
+    {
+      "id": 20,
+      "name": "Benjamin King",
+      "mail": "benjamin@domain.com",
+      "birthday": "1990-12-28",
+      "genre": "male",
+      "is_active": true,
+      "token": "token454",
+      "creation_date": "2025-05-30T19:00:00Z",
+      "role": "editor"
+    },
+    {
+      "id": 21,
+      "name": "Last user",
+      "mail": "benjamin@domain.com",
+      "birthday": "1990-12-28",
+      "genre": "male",
+      "is_active": true,
+      "token": "token454",
+      "creation_date": "2025-05-30T19:00:00Z",
+      "role": "editor"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "date": "2025-05-01",
+      "amount": 250,
+      "is_planned": false
+    },
+    {
+      "id": 2,
+      "date": "2025-05-02",
+      "amount": 75.5,
+      "is_planned": true
+    },
+    {
+      "id": 3,
+      "date": "2025-05-03",
+      "amount": 120.99,
+      "is_planned": false
+    },
+    {
+      "id": 4,
+      "date": "2025-05-04",
+      "amount": 300,
+      "is_planned": true
+    },
+    {
+      "id": 5,
+      "date": "2025-05-05",
+      "amount": 90,
+      "is_planned": false
+    },
+    {
+      "id": 6,
+      "date": "2025-05-06",
+      "amount": 220.75,
+      "is_planned": true
+    },
+    {
+      "id": 7,
+      "date": "2025-05-07",
+      "amount": 500,
+      "is_planned": false
+    },
+    {
+      "id": 8,
+      "date": "2025-05-08",
+      "amount": 30,
+      "is_planned": true
+    },
+    {
+      "id": 9,
+      "date": "2025-05-09",
+      "amount": 150,
+      "is_planned": false
+    },
+    {
+      "id": 10,
+      "date": "2025-05-10",
+      "amount": 400,
+      "is_planned": true
+    }
+  ]
+}
