@@ -3,8 +3,10 @@ import { SideBarContext, SideBarProvider } from '@/context/SideBarContext'
 import { Box, styled } from '@mui/material'
 import { SideBar } from './SideBar'
 import { useContext } from 'react';
+import { Footer } from '../Footer';
+import { DRAWER_WIDTH, TOP_BAR_HEIGHT } from '@/constants';
 
-const DRAWER_WIDTH = 240;
+
 
 type NavigationProps = {
     children: React.ReactNode
@@ -16,27 +18,18 @@ export const Navigation = ({children}: NavigationProps) => {
     <Box
       sx={{
         width: "100vw",
-        paddingBottom: 1,
         display: "flex",
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-between",
+       overflow:"-moz-initial"
       }}
     >
-      <SideBar drawerWidth={DRAWER_WIDTH}>
+      <SideBar>
         <Main>
 
-        {children} {/* // Delete div here */}
-        <Box
-          sx={{
-              bgcolor: "#ddc750",
-              display: "flex",
-              justifyContent: "center",
-              padding: 1,
-            }}
-            >
-          <h3>Footer</h3>
-        </Box>
+        {children}
+{/* <Footer/> */}
             </Main>
       </SideBar>
     </Box>
@@ -60,11 +53,13 @@ type MainProps = {
           display: "flex",
           flex: 1,
           flexGrow: 1,
-          marginTop: "70px",
-          minHeight: "calc(100vh - 70px)",
+          height:"100vh",
+          marginTop: `${TOP_BAR_HEIGHT}px`,
+          padding:3,
+          paddingX:3,
           flexDirection: "column",
           justifyContent: "space-between",
-          paddingInline: 2,
+          backgroundColor: theme.palette.background.default,
           marginLeft: openSideBar ? 0 : `-${DRAWER_WIDTH}px`,
           transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,

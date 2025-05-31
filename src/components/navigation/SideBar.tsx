@@ -1,6 +1,7 @@
 "use client";
 import {
   Box,
+  Button,
   CssBaseline,
   Drawer,
   IconButton,
@@ -18,41 +19,49 @@ import {
   ChevronRight as ChevronRightIcon,
   Insights as InsightsIcon,
   Group as GroupIcon,
+  Home as HomeIcon,
+  AccountCircle as AccountCircleIcon,
+  Logout as LogoutIcon,
 } from "@mui/icons-material";
 import React, { SetStateAction, useContext } from "react";
 import { TopBar } from "./TopBar";
 import { SideBarContext } from "@/context/SideBarContext";
+import { DRAWER_WIDTH, PAGE_ROUTES, TOP_BAR_HEIGHT } from "@/constants";
+import { usePathname, useRouter } from "next/navigation";
 
 type SideBarProps = {
-  drawerWidth: number;
   children?: React.ReactNode;
 };
 
-export const SideBar = ({ drawerWidth, children }: SideBarProps) => {
+export const SideBar = ({ children }: SideBarProps) => {
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
 
-  const handleClientsClick = (path: string) => {};
+  const router = useRouter();
+  const currentPath = usePathname();
 
+  // Esta no constante tambem, corrigir TODO
   const drawerItems = [
-    { label: "Highlights", path: "/highlights", icon: <InsightsIcon /> },
-    { label: "Statistics", path: "/statistics", icon: <PersonIcon /> },
-    { label: "Users", path: "/users", icon: <GroupIcon /> },
+    { label: PAGE_ROUTES.highlights.name, path: PAGE_ROUTES.highlights.path, icon: <HomeIcon /> },
+    { label: PAGE_ROUTES.stats.name, path: PAGE_ROUTES.stats.path, icon: <InsightsIcon /> },
+    { label: PAGE_ROUTES.users.name, path: PAGE_ROUTES.users.path, icon: <GroupIcon /> },
   ];
 
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
+    <Box sx={{ display: "flex", flex: 1, overflow: "hidden" }}>
       <CssBaseline />
       <TopBar />
 
       <Drawer
         sx={{
-          width: drawerWidth,
-          flexShrink: 0,
+          width: `${DRAWER_WIDTH}px`,
+          //  flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-            marginTop: "64px",
+            width: `${DRAWER_WIDTH}px`,
+            borderRight: "none",
+            boxShadow: "none",
+            backgroundColor: theme.palette.BG.blue30,
+            marginTop: `${TOP_BAR_HEIGHT}px`,
           },
         }}
         variant="persistent"
@@ -60,15 +69,78 @@ export const SideBar = ({ drawerWidth, children }: SideBarProps) => {
         open={openSideBar}
       >
         <DrawerHeader theme={theme} setOpenSideBar={setOpenSideBar} />
-        <List>
-          {drawerItems.map((item, index) => (
-            <ListItem key={index} disablePadding>
-              <ListItemButton onClick={() => handleClientsClick(item.path)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+        <List
+          sx={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "space-between",
+            mt: `${TOP_BAR_HEIGHT}px`,
+            pt: 2,
+            transform: `translateY(-${TOP_BAR_HEIGHT}px)`,
+          }}
+        >
+          <Box>
+            {drawerItems.map((item, index) => {
+              const isSelected = currentPath === item.path;
+
+              return (
+                <ListItem key={index} disablePadding>
+                  <ListItemButton
+                   sx={{
+                      "&:hover": {
+                        backgroundColor: theme.palette.primary.light,
+                      },
+                      "&.Mui-selected": {
+                        backgroundColor: theme.palette.background.default,
+                        color: theme.palette.primary.main,
+                        "&:hover": {
+                         // backgroundColor: theme.palette.primary.dark,
+                        },
+                        
+                      },
+                    }}
+                    onClick={() => router.push(item.path)}
+                    selected={isSelected}
+                    //disabled={isSelected}
+                  >
+                    <Box
+                      display="flex"
+                      flex={1}
+                      flexDirection="row"
+                      alignItems="center"
+                    >
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.label} />
+                    </Box>
+                    <ListItemIcon
+                      sx={{ display: "flex", justifyContent: "end" }}
+                    >
+                      <ChevronRightIcon />
+                    </ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </Box>
+          {/* Logout related*/}
+          <ListItem
+            disablePadding
+            sx={{
+              px: 1,
+            }}
+          >
+            <IconButton
+              onClick={() => console.log("Logout clicked")}
+              sx={{
+                "&:hover": {
+                  backgroundColor: theme.palette.background.paper,
+                },
+              }}
+            >
+              <LogoutIcon fontSize="large" />
+            </IconButton>
+          </ListItem>
         </List>
       </Drawer>
 
@@ -88,19 +160,42 @@ const DrawerHeader = ({ theme, setOpenSideBar }: DrawerHeaderProps) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingRight:1,
-        paddingLeft: 4,
+        paddingRight: 1,
+        paddingTop: 2,
         ...theme.mixins.toolbar,
       }}
     >
       <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
-        <Typography variant="h6" noWrap component="div">
-          Logo
-        </Typography>
+        <Avatar name="User Name" />
       </Box>
       <IconButton size="medium" onClick={() => setOpenSideBar((prev) => !prev)}>
         <ChevronLeftIcon />
       </IconButton>
+    </Box>
+  );
+};
+type AvatarProps = { name: string };
+const Avatar = ({ name }: AvatarProps) => {
+  return (
+    <Box
+      display="flex"
+      flex={1}
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={1.5}
+    >
+      <Typography fontSize="60px" display="flex">
+        <AccountCircleIcon fontSize="inherit" />
+      </Typography>
+      <Box display="flex" flexDirection="column" alignItems="start">
+        <Typography variant="h6" noWrap>
+          {name}
+        </Typography>
+        <Typography variant="body1" color="textDisabled" noWrap>
+          Super Admin
+        </Typography>
+      </Box>
     </Box>
   );
 };
