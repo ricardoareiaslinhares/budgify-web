@@ -47,7 +47,7 @@ export const SideBar = ({ children }: SideBarProps) => {
   ];
 
   return (
-    <Box sx={{ display: "flex", flex: 1, overflow: "hidden" }}>
+    <Box sx={{ display:"flex" }}>
       <CssBaseline />
       <TopBar />
 

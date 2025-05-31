@@ -22,7 +22,6 @@ export const Navigation = ({children}: NavigationProps) => {
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-between",
-       overflow:"-moz-initial"
       }}
     >
       <SideBar>
@@ -50,21 +49,21 @@ type MainProps = {
       <Box
         component="main"
         sx={(theme) => ({
+          overflow:"auto",
           display: "flex",
           flex: 1,
           flexGrow: 1,
           height:"100vh",
           marginTop: `${TOP_BAR_HEIGHT}px`,
-          padding:3,
-          paddingX:3,
+
           flexDirection: "column",
           justifyContent: "space-between",
           backgroundColor: theme.palette.background.default,
           marginLeft: openSideBar ? 0 : `-${DRAWER_WIDTH}px`,
-          transition: theme.transitions.create("margin", {
+           transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
-          }),
+          }), 
         })}
       >
         {children}
