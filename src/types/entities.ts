@@ -1,4 +1,4 @@
-type User = {
+export type User = {
   id: number;
   name: string;
   mail: string;
@@ -9,3 +9,10 @@ type User = {
   creation_date: string; // or `Date` if parsing
   role: string
 };
+
+export type Transaction = {
+  id: number,
+  date: string,
+  amount: number,
+  is_planned: boolean  
+}
