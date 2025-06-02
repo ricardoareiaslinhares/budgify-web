@@ -4,98 +4,8 @@
       "email": "budgify@fmail.pt",
       "password": "123",
       "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "8965",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "2590",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "9258",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "d4c9",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "cf46",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "b994",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "a95f",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "a939",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "4648",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "399c",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "113f",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "b1af",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "6238",
-      "email": "linhares.areias@gmail.com",
-      "password": "tiger75red",
-      "token": "abc123xyz456",
-      "creation_date": "2025-05-30T10:00:00Z"
+      "creation_date": "2025-05-30T10:00:00Z",
+      "id": "b860"
     }
   ],
   "logout": {
@@ -163,7 +73,7 @@
       "mail": "frank@domain.com",
       "birthday": "1980-04-18",
       "genre": "male",
-      "is_active": true,
+      "is_active": false,
       "token": "token987",
       "creation_date": "2025-05-25T15:00:00Z",
       "role": "superadmin"
@@ -213,7 +123,7 @@
       "role": "superadmin"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Emma Davis",
       "mail": "emma@domain.com",
       "birthday": "1985-04-10",
@@ -224,7 +134,7 @@
       "role": "admin"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Liam Johnson",
       "mail": "liam@domain.com",
       "birthday": "1992-09-15",
@@ -235,7 +145,7 @@
       "role": "editor"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Olivia Martin",
       "mail": "olivia@domain.com",
       "birthday": "1996-03-22",
@@ -246,7 +156,7 @@
       "role": "viewer"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Noah Thompson",
       "mail": "noah@domain.com",
       "birthday": "1988-07-09",
@@ -257,7 +167,7 @@
       "role": "editor"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Ava Wilson",
       "mail": "ava@domain.com",
       "birthday": "1993-11-17",
@@ -268,7 +178,7 @@
       "role": "admin"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "William Lee",
       "mail": "william@domain.com",
       "birthday": "1980-08-05",
@@ -279,7 +189,7 @@
       "role": "superadmin"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Sophia Harris",
       "mail": "sophia@domain.com",
       "birthday": "1991-01-20",
@@ -290,7 +200,7 @@
       "role": "admin"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "James Walker",
       "mail": "james@domain.com",
       "birthday": "1984-06-12",
@@ -301,7 +211,7 @@
       "role": "editor"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Isabella Young",
       "mail": "isabella@domain.com",
       "birthday": "1997-10-03",
@@ -312,7 +222,7 @@
       "role": "viewer"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Benjamin King",
       "mail": "benjamin@domain.com",
       "birthday": "1990-12-28",
@@ -323,7 +233,7 @@
       "role": "editor"
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Last user",
       "mail": "benjamin@domain.com",
       "birthday": "1990-12-28",
@@ -336,61 +246,61 @@
   ],
   "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "date": "2025-05-01",
       "amount": 250,
       "is_planned": false
     },
     {
-      "id": 2,
+      "id": "2",
       "date": "2025-05-02",
       "amount": 75.5,
       "is_planned": true
     },
     {
-      "id": 3,
+      "id": "3",
       "date": "2025-05-03",
       "amount": 120.99,
       "is_planned": false
     },
     {
-      "id": 4,
+      "id": "4",
       "date": "2025-05-04",
       "amount": 300,
       "is_planned": true
     },
     {
-      "id": 5,
+      "id": "5",
       "date": "2025-05-05",
       "amount": 90,
       "is_planned": false
     },
     {
-      "id": 6,
+      "id": "6",
       "date": "2025-05-06",
       "amount": 220.75,
       "is_planned": true
     },
     {
-      "id": 7,
+      "id": "7",
       "date": "2025-05-07",
       "amount": 500,
       "is_planned": false
     },
     {
-      "id": 8,
+      "id": "8",
       "date": "2025-05-08",
       "amount": 30,
       "is_planned": true
     },
     {
-      "id": 9,
+      "id": "9",
       "date": "2025-05-09",
       "amount": 150,
       "is_planned": false
     },
     {
-      "id": 10,
+      "id": "10",
       "date": "2025-05-10",
       "amount": 400,
       "is_planned": true

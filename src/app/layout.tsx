@@ -26,17 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-  <html lang="en" className={roboto.variable}>
+    <html lang="en" className={roboto.variable}>
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <QueryProvider>
-                    <AppDialogProvider>
-
-            {children}
-      <AppDialog />
-      </AppDialogProvider>
-
+              <AppDialogProvider>
+                {children}
+                <AppDialog />
+              </AppDialogProvider>
             </QueryProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>

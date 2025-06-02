@@ -8,7 +8,11 @@ export const useAuth = () => {
   // validates on FE decodes, get user id
   // valis -> does a req to a protected route, eg, its user id profile
   // ok -> can procede
-  const [token, setToken] = useState<string | null>(null)
+
+  // or
+
+// 2. sends token on params to get user info 
+
  const [userId, setUserId] = useState<string | null>(null)
   useEffect(() => {
     const storedToken = localStorage.getItem('authToken')
@@ -17,9 +21,7 @@ export const useAuth = () => {
     if (!storedToken) return
 
     try {
-      const decodedId = decodeToken(storedToken)
-      setToken(storedToken)
-      setUserId(decodedId)
+      setUserId(storedToken)
       
     } catch (err) {
         console.log("error decoding token =>"); // Delete
@@ -50,6 +52,3 @@ console.log("userId =>", userId); // Delete
   };
 };
 
-const decodeToken = (token: string) => {
-  return token
-};
