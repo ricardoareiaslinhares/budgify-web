@@ -1,14 +1,28 @@
 export type User = {
-  id: number;
+  idUser: string;
+  idUserGroup: string | null;
   name: string;
-  mail: string;
-  birthday: string; // consider `Date` if parsing later
-  genre: string
-  is_active: boolean;
-  token: string;
-  creation_date: string; // or `Date` if parsing
-  role: string
+  email: string;
+  dateOfBirth: string; 
+  genre: number;      
+  isActive: boolean;
+  isAdmin: boolean;
+  isManager: boolean;
+  allowWalletWatch: boolean;
+  isSuperAdmin: boolean;
+  profilePic?: string;
+  creationDate: string;
+
 };
+
+export type UserCreate = {
+  name: string;
+  email: string;
+  dateOfBirth: string; 
+  genre: number;       
+  password:string,
+  allowWalletWatch: boolean;
+}
 
 export type Transaction = {
   id: number,
