@@ -6,6 +6,7 @@ import { Records } from "@/components/records/Records";
 import { NewUserCards } from "./NewUserCards";
 import {endOfDay, subDays } from 'date-fns';
 import { WeekTransactions } from "./WeekTransactions";
+import { Typography } from "@mui/material";
 
 export default function Home() {
   const today = new Date()
@@ -25,6 +26,7 @@ const params = `startDate=${startDate}&endDate=${endDate}`;
           <WeekTransactions/>
         }
       />
+      <Typography textAlign={"center"} my={4} variant="h4">New App Users</Typography>
       <Records<User>
         recordConfig={{ entity: API_ROUTES.users.api }}
         customRender={
