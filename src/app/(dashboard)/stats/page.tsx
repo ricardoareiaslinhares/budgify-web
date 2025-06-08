@@ -15,32 +15,48 @@ export default async function Stats() {
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
   
-  const response = await fetch(
-    `${API_URL}${API_ROUTES.transactions.be}?${params}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      cache: "no-store",
-    }
-  );
-  const data = await response.json();
-
-  console.log("data Stats=>", data); // Delete
-
-  const transactionsData: Array<TransactionStat> = data.data;
-
-  const responseUser = await fetch(`${API_URL}${API_ROUTES.users.be}`, {
+const response = await fetch(
+  `${API_URL}${API_ROUTES.transactions.be}?${params}`,
+  {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     cache: "no-store",
-  });
-  const dataUser = await responseUser.json();
+  }
+);
+
+if (!response.ok) {
+  const text = await response.text(); // Helpful for debugging
+  console.error("Transaction API failed:", text);
+  throw new Error("Failed to fetch transactions");
+}
+
+const data = await response.json();
+
+
+  console.log("data Stats=>", data); // Delete
+
+  const transactionsData: Array<TransactionStat> = data.data;
+
+const responseUser = await fetch(`${API_URL}${API_ROUTES.users.be}`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+  cache: "no-store",
+});
+
+if (!responseUser.ok) {
+  const text = await responseUser.text();
+  console.error("User API failed:", text);
+  throw new Error("Failed to fetch users");
+}
+
+const dataUser = await responseUser.json();
+
   const userData: Array<User> = dataUser.data;
   const orderedUsers = [...userData].reverse();
   console.log("userData =>", userData); // Delete
