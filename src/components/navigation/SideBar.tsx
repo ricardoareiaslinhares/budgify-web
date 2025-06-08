@@ -23,11 +23,12 @@ import {
   AccountCircle as AccountCircleIcon,
   Logout as LogoutIcon,
 } from "@mui/icons-material";
-import React, { SetStateAction, useContext } from "react";
+import React, { SetStateAction, useContext, useEffect } from "react";
 import { TopBar } from "./TopBar";
 import { SideBarContext } from "@/context/SideBarContext";
 import { DRAWER_WIDTH, PAGE_ROUTES, TOP_BAR_HEIGHT } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 type SideBarProps = {
   userName: string
@@ -37,6 +38,14 @@ type SideBarProps = {
 export const SideBar = ({ children, userName }: SideBarProps) => {
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
+
+    const isMobile = useIsMobile();
+
+  useEffect(() => {
+    if (isMobile) {
+      setOpenSideBar(false);
+    }
+  }, [isMobile, setOpenSideBar]);
 
   const router = useRouter();
   const currentPath = usePathname();
