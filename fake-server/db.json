@@ -6,6 +6,12 @@
       "token": "abc123xyz456",
       "creation_date": "2025-05-30T10:00:00Z",
       "id": "b860"
+    },
+    {
+      "id": 1,
+      "name": "mock",
+      "token": "abc123xyz456",
+      "creation_date": "2025-05-30T10:00:00Z"
     }
   ],
   "logout": {
@@ -84,7 +90,7 @@
       "mail": "grace@domain.com",
       "birthday": "1991-06-12",
       "genre": "female",
-      "is_active": true,
+      "is_active": false,
       "token": "token000",
       "creation_date": "2025-05-26T16:00:00Z",
       "role": "superadmin"
