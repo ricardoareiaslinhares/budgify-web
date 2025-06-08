@@ -24,6 +24,8 @@ export async function GET(req: Request) {
 const responseData = NextResponse.json(data);
 
 return responseData;
+console.log("responseData =>", responseData); // Delete
+
 
 
 }

@@ -2,7 +2,6 @@ import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
 import { API_ROUTES, API_URL } from "@/constants";
 import { TransactionStat, User } from "@/types/entities";
-import { cookies } from "next/headers";
 import { getISOWeek, getYear, parseISO } from "date-fns";
 
 
@@ -10,11 +9,8 @@ export const dynamic = "force-dynamic";
 
 export default async function Stats() {
   const today = new Date().toISOString();
-  const cookieStore = await cookies();
-  const token = cookieStore.get("auth-token")?.value;if (!token) {
-  console.error("No token found in cookies.");
-  throw new Error("User not authenticated.");
-}
+
+
 
 const productionURL = "https://budgify-web.vercel.app"
 
@@ -22,12 +18,11 @@ const productionURL = "https://budgify-web.vercel.app"
 
   
 const response = await fetch(
-  `${productionURL}${API_ROUTES.transactions.api}?${params}`,
+  `${API_ROUTES.transactions.api}?${params}`,
   {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     cache: "no-store",
   }
@@ -46,11 +41,10 @@ const data = await response.json();
 
   const transactionsData: Array<TransactionStat> = data.data;
 
-const responseUser = await fetch(`${productionURL}${API_ROUTES.users.api}`, {
+const responseUser = await fetch(`${API_ROUTES.users.api}`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
   },
   cache: "no-store",
 });
