@@ -6,8 +6,9 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value;
- console.log("IMHERE---------------------------- =>"); // Delete
+ console.log("IMHERE---------------------------- =>",searchParams.toString()); // Delete
   
+console.log("req.url =>", req.url); // Delete
 
   const response = await fetch(`${API_URL}${API_ROUTES.transactions.be}?${searchParams.toString()}`, {
     //method: "GET",
