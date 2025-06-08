@@ -65,7 +65,7 @@ return (
               formatter={(value: number, name: string) => [value, yAxisLabel]}
               labelFormatter={(label: string) => `${xAxisLabel}: ${label}`}
             />
-            <Legend />
+
             <Line
               type="monotone"
               dataKey="y"
