@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Budgify",
   description: "Budgify Super Admin",
   icons: {
-    icon: "/icon.ico"
+    icon: "/favicon.ico"
   }
 };
 
