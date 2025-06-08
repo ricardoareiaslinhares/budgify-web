@@ -2,14 +2,11 @@ import { getRecords } from "@/api-connection/methods";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
 import { API_ROUTES, API_URL } from "@/constants";
-import { User } from "@/types/entities";
+import { TransactionStat, User } from "@/types/entities";
 import { cookies } from "next/headers";
 import { getISOWeek, getYear, parseISO } from "date-fns";
 
-type TransactionStat = {
-  count: number;
-  date: Date;
-};
+
 
 export default async function Stats() {
   const today = new Date().toISOString();
