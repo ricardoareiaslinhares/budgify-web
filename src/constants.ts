@@ -8,3 +8,13 @@ export const PAGE_ROUTES = {
 };
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL
+
+export const API_ROUTES = {
+  login: "/authentication/login",
+  transactions: "/transactions/superadmin/stats",
+  users: "/accounts/superadmin/user",
+  user: "/accounts/user",
+  deactivateUser:"/accounts/superadmin/user", // method delete
+  activateUser:"/accounts/superadmin/user" // method patch
+ 
+}

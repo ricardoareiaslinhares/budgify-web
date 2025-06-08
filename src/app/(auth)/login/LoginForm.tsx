@@ -39,8 +39,10 @@ export function LoginForm({}: LoginProps) {
 
 
    const onSubmit = async (data:LoginFormInputs) => {
-        const result = mutate(data);
-        console.log("result =>", result); // Delete
+         mutate(data);
+        //console.log("result =>", result.data); // Delete
+          //localStorage.setItem("authToken",  result.data.token)
+
         
     };
 

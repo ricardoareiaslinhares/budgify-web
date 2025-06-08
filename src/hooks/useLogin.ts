@@ -1,6 +1,4 @@
-import { api } from "@/api-connection/config";
-import { useRecords } from "@/api-connection/record-hooks/useRecords";
-import { API_URL, PAGE_ROUTES } from "@/constants";
+import { API_ROUTES, API_URL, PAGE_ROUTES } from "@/constants";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -20,27 +18,10 @@ const login = async (loginData: {
   email: string;
   password: string;
 }): Promise<any> => {
-  const route = "/login"; // "/authetication/login"
-  const dataForMock = {
-    ...loginData,
-    token: "abc123xyz456",
-    creation_date: "2025-05-30T10:00:00Z",
-  };
-  console.log("dataForMock =>", dataForMock); // Delete
-  console.log(`${API_URL}${route}`);
   try {
-    const response = await axios({
-      method: "POST",
-      url: `${API_URL}${route}`,
-      data: dataForMock,
-    });
+    const response = await axios.post("/api/auth/login", loginData);
 
-//    localStorage.setItem("authToken", response.data.id) // the real on
-
-// fake
-     if (response.data) localStorage.setItem("authToken", "7")
-
-    console.log("response =>", response.data); // Delete
+  localStorage.setItem("authToken",  response.data.data.token)
     return response.data;
   } catch (error) {
     console.log("Error on useLogin", error);

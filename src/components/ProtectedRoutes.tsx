@@ -13,6 +13,8 @@ type ProtectedRoutesProps = {
 export const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
   const router = useRouter();
   const {isAuthenticated, user, isLoading} = useAuth();
+  console.log("user =>", user); // Delete
+  
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -22,9 +24,9 @@ export const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
     }
   }, [isAuthenticated, isLoading]);
 
-  if (isLoading || !isAuthenticated) {
-    return <LinearProgress/>
-  }
+    if (isLoading || !isAuthenticated || !user.name) {
+  return <LinearProgress/>
+  }  
 
   return <Navigation userName={user?.name}>{children}</Navigation>;
 };
