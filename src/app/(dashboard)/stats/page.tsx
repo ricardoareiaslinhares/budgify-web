@@ -7,11 +7,16 @@ import { cookies } from "next/headers";
 import { getISOWeek, getYear, parseISO } from "date-fns";
 
 
+export const dynamic = "force-dynamic";
 
 export default async function Stats() {
   const today = new Date().toISOString();
   const cookieStore = await cookies();
-  const token = cookieStore.get("auth-token")?.value;
+  const token = cookieStore.get("auth-token")?.value;if (!token) {
+  console.error("No token found in cookies.");
+  throw new Error("User not authenticated.");
+}
+
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
   
