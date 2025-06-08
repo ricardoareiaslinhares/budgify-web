@@ -22,7 +22,7 @@ const responseData = NextResponse.json(data);
 responseData.cookies.set({
   name: "auth-token",
   value: token,
-  httpOnly: true,
+  //httpOnly: true,
   path: "/",
   maxAge: 60 * 60 * 24 * 7,
   sameSite: "lax",

@@ -20,8 +20,9 @@ const login = async (loginData: {
 }): Promise<any> => {
   try {
     const response = await axios.post("/api/auth/login", loginData);
+    console.log("Res from useLogin =>", response); // Delete
 
-  localStorage.setItem("authToken",  response.data.data.token)
+  //localStorage.setItem("authToken",  response.data.data.token)
     return response.data;
   } catch (error) {
     console.log("Error on useLogin", error);
