@@ -41,8 +41,9 @@ export const getRecord = async <T>(
 
 export const updateRecord = async <T> (entity: string, id: number|string, data: Partial<T>, params?:string): Promise<T> => {
   try {
+      const url = params ? `${entity}?id=${id}&${params}` : `${entity}?id=${id}`;
     
-    const response = await api.patch<Response<T>>(`${entity}/${id}?${params}`, data)
+    const response = await api.patch<Response<T>>(url, data);
     return response.data.data
   } catch (error) {
     console.error(`Error updating record from ${entity} id of ${id}:`, error);
@@ -51,8 +52,10 @@ export const updateRecord = async <T> (entity: string, id: number|string, data: 
 }
 
 export const deleteRecord = async <T>(entity: string, id: number | string, params?: string): Promise<T> => {
+  console.log("entity, id =>", entity, id); // Delete
+  
   try {
-    const url = params ? `${entity}/${id}?${params}` : `${entity}/${id}`;
+    const url = params ? `${entity}?id=${id}&${params}` : `${entity}?id=${id}`;
     
     const response = await api.delete<Response<T>>(url);
     console.log("Deleted record response =>", response); // Optional log

@@ -4,7 +4,7 @@ import { API_URL, API_ROUTES } from "@/constants";
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const response = await fetch(`${API_URL}${API_ROUTES.login}`, {
+  const response = await fetch(`${API_URL}${API_ROUTES.login.be}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

@@ -10,11 +10,10 @@ export const PAGE_ROUTES = {
 export const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export const API_ROUTES = {
-  login: "/authentication/login",
-  transactions: "/transactions/superadmin/stats",
-  users: "/accounts/superadmin/user",
-  user: "/accounts/user",
-  deactivateUser:"/accounts/superadmin/user", // method delete
-  activateUser:"/accounts/superadmin/user" // method patch
+  login: {be:"/authentication/login", api:"/api/auth/login"},
+  transactions: {be:"/transactions/superadmin/stats", api:"/api/stats"},
+  users: {be:"/accounts/superadmin/user", api:"/api/users"},
+  user: {be:"/accounts/user", api:"/api/user"},
+
  
 }

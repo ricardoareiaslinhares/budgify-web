@@ -14,8 +14,9 @@ export default async function Stats() {
   const token = cookieStore.get("auth-token")?.value;
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
+  
   const response = await fetch(
-    `${API_URL}${API_ROUTES.transactions}?${params}`,
+    `${API_URL}${API_ROUTES.transactions.be}?${params}`,
     {
       method: "GET",
       headers: {
@@ -31,7 +32,7 @@ export default async function Stats() {
 
   const transactionsData: Array<TransactionStat> = data.data;
 
-  const responseUser = await fetch(`${API_URL}${API_ROUTES.users}`, {
+  const responseUser = await fetch(`${API_URL}${API_ROUTES.users.be}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

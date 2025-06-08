@@ -20,13 +20,13 @@ const params = `startDate=${startDate}&endDate=${endDate}`;
   return (
     <BodyWraper sx={{minHeight:"300px"}}>
       <Records<User>
-        recordConfig={{ entity: API_ROUTES.transactions, params:params }}
+        recordConfig={{ entity: API_ROUTES.transactions.api, params:params }}
         customRender={
           <WeekTransactions/>
         }
       />
       <Records<User>
-        recordConfig={{ entity: API_ROUTES.users }}
+        recordConfig={{ entity: API_ROUTES.users.api }}
         customRender={
           <NewUserCards/>
         }

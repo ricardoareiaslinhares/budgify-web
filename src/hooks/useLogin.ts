@@ -19,7 +19,7 @@ const login = async (loginData: {
   password: string;
 }): Promise<any> => {
   try {
-    const response = await axios.post("/api/auth/login", loginData);
+    const response = await axios.post(API_ROUTES.login.api, loginData);
     console.log("Res from useLogin =>", response); // Delete
 
   //localStorage.setItem("authToken",  response.data.data.token)

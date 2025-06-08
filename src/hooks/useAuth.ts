@@ -6,17 +6,19 @@ import { User } from "@/types/entities";
 
 
 export const useAuth = () => {
-  const { data, error, isLoading, isSuccess } = useRecords<User>(API_ROUTES.user, "");
+  const { data, error, isLoading, isSuccess } = useRecords<User>(API_ROUTES.user.api, "");
   console.log("data from useAuth2 =>", data); // Delete
 
   const user = data as unknown as User
+  console.log("use------------ =>", user); // Delete
   
-/*    return {
+  
+    return {
     isAuthenticated: isSuccess && !!data,
     user: user || null,
     isLoading,
   }; 
- */
+ 
     return {
     isAuthenticated: true,
     user: {name:"fake"},

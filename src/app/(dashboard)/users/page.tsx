@@ -12,7 +12,7 @@ import { CreateUserDialog } from "./CreateUserDialog";
 import { useCreateRecord } from "@/api-connection/record-hooks/useCreateRecord";
 
 export default function Users() {
-  const createRecord  = useCreateRecord<UserCreate>(API_ROUTES.user, {queryInvalidatePrefix:API_ROUTES.users})
+  const createRecord  = useCreateRecord<UserCreate>(API_ROUTES.user.api, {queryInvalidatePrefix:API_ROUTES.users.api})
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -27,7 +27,7 @@ export default function Users() {
         }
       >
         <Records<User>
-          recordConfig={{ entity: API_ROUTES.users }}
+          recordConfig={{ entity: API_ROUTES.users.api }}
           dataGridColumnMap={usersColumnMap}
         ></Records>
       </BodyWraper>
