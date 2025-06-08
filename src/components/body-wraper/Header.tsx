@@ -15,10 +15,12 @@ export const Header = ({pathname, children}: HeaderProps) => {
         height: `${HEADER_HEIGHT}px`,
         backgroundColor: theme.palette.BG.blue30,
         display: "flex",
+        width: "100%",
         alignItems: "center",
         paddingX: 4,
         borderRadius:2,
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        overflowX:"auto",
       })}
     >
       <Typography variant="h4" fontWeight="bold">{currentPageName}</Typography>

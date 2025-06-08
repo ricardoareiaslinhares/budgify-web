@@ -1,5 +1,5 @@
 "use client";
-import { Box, useTheme } from "@mui/material";
+import { Box, SxProps, Theme, useTheme } from "@mui/material";
 import { Header } from "./Header";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
@@ -7,10 +7,11 @@ import { SideBarContext } from "@/context/SideBarContext";
 
 type BodyWraperProps = {
   children: React.ReactNode;
-  customHeaderRightSide?: React.ReactNode
+  customHeaderRightSide?: React.ReactNode,
+    sx?: SxProps<Theme>; 
 };
 
-export const BodyWraper = ({ children, customHeaderRightSide}: BodyWraperProps) => {
+export const BodyWraper = ({ children, customHeaderRightSide, sx}: BodyWraperProps) => {
   const pathname = usePathname();
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
@@ -30,11 +31,12 @@ export const BodyWraper = ({ children, customHeaderRightSide}: BodyWraperProps) 
           easing: theme.transitions.easing.easeInOut,
           duration: theme.transitions.duration.complex,
         }),
+      
       }}
     >
       <Header pathname={pathname} >{customHeaderRightSide}</Header>
 
-      <Box sx={{ backgroundColor: theme.palette.BG.blue30, borderRadius: 2 }}>
+      <Box sx={{ backgroundColor: theme.palette.BG.blue30, borderRadius: 2,         overflowX:"auto",  ...sx }}>
         {children}
       </Box>
     </Box>
