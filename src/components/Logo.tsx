@@ -1,6 +1,6 @@
 import Image from 'next/image';
 type LoginProps  = {
-  width: number, height:number, adjustToParent:boolean
+  width: number, height:number, adjustToParent?:boolean
 }
 export const Logo = ({width, height, adjustToParent}:LoginProps) => {
   return (

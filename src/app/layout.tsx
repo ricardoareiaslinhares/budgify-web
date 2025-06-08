@@ -18,6 +18,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Budgify",
   description: "Budgify Super Admin",
+  icons: {
+    icon: "/icon.ico"
+  }
 };
 
 export default function RootLayout({
