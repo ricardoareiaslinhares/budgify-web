@@ -19,6 +19,8 @@ export default async function Stats() {
 
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
+  const url = `${API_URL}${API_ROUTES.transactions.be}?${params}`;
+console.log("Fetching transactions from:", url);
   
 const response = await fetch(
   `${API_URL}${API_ROUTES.transactions.be}?${params}`,
