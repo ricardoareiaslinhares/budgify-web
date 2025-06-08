@@ -1,4 +1,3 @@
-import { getRecords } from "@/api-connection/methods";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
 import { API_ROUTES, API_URL } from "@/constants";
@@ -19,7 +18,7 @@ export default async function Stats() {
 
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
-  const url = `${API_URL}${API_ROUTES.transactions.be}?${params}`;
+  const url = `${API_ROUTES.transactions.api}?${params}`;
 console.log("Fetching transactions from:", url);
   
 const response = await fetch(
