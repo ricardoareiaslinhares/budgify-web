@@ -9,7 +9,7 @@ import { useState } from "react";
 
 type RecordsProps = {
   recordConfig: { entity: string, params?: string };
-  dataGridColumnMap: DataGridColumnMapType;
+  dataGridColumnMap?: DataGridColumnMapType;
   dataGridOptions?: DataGridOptions;
   customRender?: React.ReactNode;
 };
@@ -37,7 +37,7 @@ export const Records = <T,>({
     <RecordsContext.Provider value={{ data, entity, page, setPage, pageSize, setPageSize }}>
       {customRender || (
         <DataGrid<T>
-          dataGridColumnMap={dataGridColumnMap}
+          dataGridColumnMap={dataGridColumnMap!}
           options={dataGridOptions}
         />
       )}
