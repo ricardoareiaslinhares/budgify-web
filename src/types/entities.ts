@@ -30,3 +30,8 @@ export type Transaction = {
   amount: number,
   is_planned: boolean  
 }
+
+export type TransactionStat = {
+  count: number;
+  date: Date;
+};

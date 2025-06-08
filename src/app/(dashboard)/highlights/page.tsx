@@ -1,33 +1,36 @@
-"use client";
+
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
-import { HorizontalCard } from "@/components/HorizontalCard";
-import { useState } from "react";
-const initialData = [
-  { id: 1, name: "Alice", text: "Frontend Developer" },
-  { id: 2, name: "Bob", text: "Backend Engineer" },
-  { id: 3, name: "Charlie", text: "UI/UX Designer" },
-];
+import { API_ROUTES } from "@/constants";
+import { User } from "@/types/entities";
+import { Records } from "@/components/records/Records";
+import { NewUserCards } from "./NewUserCards";
+import {endOfDay, subDays } from 'date-fns';
+import { WeekTransactions } from "./WeekTransactions";
+
 export default function Home() {
-  const [visibleCards, setVisibleCards] = useState<Record<number, boolean>>(() =>
-    initialData.reduce((acc, item) => ({ ...acc, [item.id]: true }), {} as Record<number, boolean>)
-  );
+  const today = new Date()
+const sevenDaysAgo = subDays(today, 6);
+const startDate = sevenDaysAgo.toISOString();
+const endDate = endOfDay(today).toISOString();
+const params = `startDate=${startDate}&endDate=${endDate}`;
 
-  const handleClose = (id: number) => {
-    setVisibleCards((prev) => ({ ...prev, [id]: false }));
-  };
+
+  
+
   return (
-    <BodyWraper>
-      <p>Home</p>
-
-      {initialData.map((item) => (
-        <HorizontalCard
-          key={item.id}
-          name={item.name}
-          text={item.text}
-          open={visibleCards[item.id]}
-          onClose={() => handleClose(item.id)}
-        />
-      ))}
+    <BodyWraper sx={{minHeight:"300px"}}>
+      <Records<User>
+        recordConfig={{ entity: API_ROUTES.transactions, params:params }}
+        customRender={
+          <WeekTransactions/>
+        }
+      />
+      <Records<User>
+        recordConfig={{ entity: API_ROUTES.users }}
+        customRender={
+          <NewUserCards/>
+        }
+      />
     </BodyWraper>
   );
 }

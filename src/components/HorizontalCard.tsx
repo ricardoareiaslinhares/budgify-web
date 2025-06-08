@@ -10,7 +10,7 @@ import {
   Box,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
 interface HorizontalCardProps {
   name: string;
@@ -29,8 +29,7 @@ export const HorizontalCard: React.FC<HorizontalCardProps> = ({
 
   return (
     <Box position="relative" display="inline-block" m={2}>
-      {/* Floating Close Button */}
-      <IconButton
+{/*       <IconButton
         onClick={onClose}
         sx={{
           position: 'absolute',
@@ -46,9 +45,8 @@ export const HorizontalCard: React.FC<HorizontalCardProps> = ({
         aria-label="close"
       >
         <CloseIcon />
-      </IconButton>
+      </IconButton> */}
 
-      {/* Main Card */}
       <Card
         sx={{
           display: 'flex',
@@ -56,13 +54,11 @@ export const HorizontalCard: React.FC<HorizontalCardProps> = ({
           borderRadius: 3,
           boxShadow: 3,
           padding: 2,
-          minWidth: 400,
+          minWidth: {sx:"100px", sm:"200px", md:"400px"},
         }}
       >
-        {/* Avatar on the left */}
         <Avatar sx={{ width: 56, height: 56, mr: 2 }}>{name.charAt(0)}</Avatar>
 
-        {/* Content */}
         <Box flex={1} display="flex" flexDirection="column" justifyContent="space-between">
           <Typography variant="h6">{name}</Typography>
 
@@ -73,9 +69,9 @@ export const HorizontalCard: React.FC<HorizontalCardProps> = ({
             mt={1}
             gap={1}
           >
-            <ErrorOutlineIcon color="warning" fontSize="small" />
+            <NewReleasesIcon color="info" fontSize="small" />
             <Typography variant="body2" color="text.secondary">
-              {text}
+              New user - {text}
             </Typography>
           </Box>
         </Box>
