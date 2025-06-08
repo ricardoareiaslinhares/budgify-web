@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   eslint: {
+     eslint: {
     ignoreDuringBuilds: true,
   },
-/*   async rewrites() {
+  async rewrites() {
     return [
       {
         source: "/api/transactions",
@@ -26,7 +26,7 @@ const nextConfig = {
         destination: "http://77.54.1.149:6580/gateway/accounts/superadmin/user",
       },
     ];
-  }, */
+  },
 };
 
 module.exports = nextConfig;

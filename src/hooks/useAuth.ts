@@ -11,12 +11,12 @@ export const useAuth = () => {
 
   const user = data as unknown as User
   
-   return {
+/*    return {
     isAuthenticated: isSuccess && !!data,
     user: user || null,
     isLoading,
   }; 
-
+ */
     return {
     isAuthenticated: true,
     user: {name:"fake"},

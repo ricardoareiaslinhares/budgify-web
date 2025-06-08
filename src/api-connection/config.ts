@@ -11,15 +11,16 @@ export const api = axios.create({
 });
 
  api.interceptors.request.use((config) =>  {
-  //const token = localStorage.getItem("authToken");
+  const token = localStorage.getItem("authToken");
   /* 
   I dont know why, but the localstorage method stoped working as soon i set the cookie in api/route. now only works if i get it from the cookies
   */
-    const token = getTokenFromCookies();
+    //const token = getTokenFromCookies();
   
   if (token) {
 
-
+    console.log("token =>", token); // Delete
+    
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
