@@ -22,7 +22,7 @@ export default async function Stats() {
 console.log("Fetching transactions from:", url);
   
 const response = await fetch(
-  `${API_URL}${API_ROUTES.transactions.be}?${params}`,
+  `${API_ROUTES.transactions.api}?${params}`,
   {
     method: "GET",
     headers: {
@@ -46,7 +46,7 @@ const data = await response.json();
 
   const transactionsData: Array<TransactionStat> = data.data;
 
-const responseUser = await fetch(`${API_URL}${API_ROUTES.users.be}`, {
+const responseUser = await fetch(`${API_ROUTES.users.api}`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
