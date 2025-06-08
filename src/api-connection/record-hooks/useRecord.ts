@@ -5,7 +5,7 @@ export const useRecord = <T>(
 
   entity: string,
   id: number,
-  params?: string,
+  params: string,
 ) => {
   const data = useQuery({
     queryKey: [`${entity}, ${id}`],
