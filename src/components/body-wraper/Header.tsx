@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material";
 
 const HEADER_HEIGHT = 70;
 
-type HeaderProps = {pathname:string};
+type HeaderProps = {pathname:string, children?: React.ReactNode};
 
-export const Header = ({pathname}: HeaderProps) => {
+export const Header = ({pathname, children}: HeaderProps) => {
 
   const currentPageName = Object.values(PAGE_ROUTES).find(route => route.path === pathname)?.name
 
@@ -17,10 +17,12 @@ export const Header = ({pathname}: HeaderProps) => {
         display: "flex",
         alignItems: "center",
         paddingX: 4,
-        borderRadius:2
+        borderRadius:2,
+        justifyContent:"space-between"
       })}
     >
       <Typography variant="h4" fontWeight="bold">{currentPageName}</Typography>
+      {children}
     </Box>
   );
 };

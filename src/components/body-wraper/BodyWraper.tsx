@@ -7,9 +7,10 @@ import { SideBarContext } from "@/context/SideBarContext";
 
 type BodyWraperProps = {
   children: React.ReactNode;
+  customHeaderRightSide?: React.ReactNode
 };
 
-export const BodyWraper = ({ children }: BodyWraperProps) => {
+export const BodyWraper = ({ children, customHeaderRightSide}: BodyWraperProps) => {
   const pathname = usePathname();
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
@@ -31,7 +32,7 @@ export const BodyWraper = ({ children }: BodyWraperProps) => {
         }),
       }}
     >
-      <Header pathname={pathname} />
+      <Header pathname={pathname} >{customHeaderRightSide}</Header>
 
       <Box sx={{ backgroundColor: theme.palette.BG.blue30, borderRadius: 2 }}>
         {children}
