@@ -16,13 +16,13 @@ export default async function Stats() {
   throw new Error("User not authenticated.");
 }
 
+const productionURL = "https://budgify-web.vercel.app"
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
-  const url = `${API_ROUTES.transactions.api}?${params}`;
-console.log("Fetching transactions from:", url);
+
   
 const response = await fetch(
-  `${API_ROUTES.transactions.api}?${params}`,
+  `${productionURL}${API_ROUTES.transactions.api}?${params}`,
   {
     method: "GET",
     headers: {
@@ -46,7 +46,7 @@ const data = await response.json();
 
   const transactionsData: Array<TransactionStat> = data.data;
 
-const responseUser = await fetch(`${API_ROUTES.users.api}`, {
+const responseUser = await fetch(`${productionURL}${API_ROUTES.users.api}`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
