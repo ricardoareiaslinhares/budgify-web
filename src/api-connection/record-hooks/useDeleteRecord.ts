@@ -1,17 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateRecord } from "../methods";
+import { deleteRecord } from "../methods";
 import { MutationOptions } from "@/types/types";
 
-type MutationArgs<T> = {
-    data: Partial<T>
-    id: number | string,
+type DeleteArgs = {
+  id: number | string;
+};
 
-}
-
-export const useUpdateRecord =<T> (entity:string, params="", options?: MutationOptions) => {
+export const useDeleteRecord = <T>(entity: string, params = "", options?: MutationOptions) => {
   const queryClient = useQueryClient();
-  return useMutation<T, void, MutationArgs<T>>({
-    mutationFn: ({ data, id }: MutationArgs<T>) => updateRecord(entity, id, data, params),
+
+  return useMutation<T, void, DeleteArgs>({
+    mutationFn: ({ id }: DeleteArgs) => deleteRecord<T>(entity, id, params),
     onSuccess(data, variables) {
       const recordsKey = options?.queryInvalidatePrefix || `${entity}-records`;
       const recordKey = `${entity}-${(data as any)?.id || variables.id}`;
@@ -27,10 +26,10 @@ export const useUpdateRecord =<T> (entity:string, params="", options?: MutationO
       });
     },
     onError(error) {
-        console.log("error =>", error); // Delete
-        
-      return error
+      console.log("Delete error =>", error);
+      return error;
     },
   });
 };
+
 

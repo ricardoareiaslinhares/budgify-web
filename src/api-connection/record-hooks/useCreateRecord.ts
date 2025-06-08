@@ -1,20 +1,27 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateRecord } from "../methods";
-import { MutationOptions } from "@/types/types";
+import { createRecord } from "../methods";
 
 type MutationArgs<T> = {
-    data: Partial<T>
-    id: number | string,
+  data: T;
+};
 
-}
+type MutationOptions = {
+  queryInvalidatePrefix?: string;
+  invalidateListQuery?: boolean;
+};
 
-export const useUpdateRecord =<T> (entity:string, params="", options?: MutationOptions) => {
+export const useCreateRecord = <T>(
+  entity: string,
+  options?: MutationOptions
+) => {
   const queryClient = useQueryClient();
+
   return useMutation<T, void, MutationArgs<T>>({
-    mutationFn: ({ data, id }: MutationArgs<T>) => updateRecord(entity, id, data, params),
-    onSuccess(data, variables) {
+    mutationFn: ({ data }: MutationArgs<T>) => createRecord<T>(entity, data),
+
+    onSuccess(data) {
       const recordsKey = options?.queryInvalidatePrefix || `${entity}-records`;
-      const recordKey = `${entity}-${(data as any)?.id || variables.id}`;
+       const recordKey = `${entity}-${(data as any)?.id}`; // TODO verify if ok
 
       const invalidationKeys = [recordsKey, recordKey];
 

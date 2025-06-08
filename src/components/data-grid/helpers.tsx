@@ -1,5 +1,5 @@
 import { DataGridColumnMapType } from "@/types/dataGrid";
-import { Delete } from "@mui/icons-material";
+import { Delete, Restore } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { GridActionsCellItem, GridActionsColDef, GridColDef } from "@mui/x-data-grid";
 
@@ -12,14 +12,19 @@ import { GridActionsCellItem, GridActionsColDef, GridColDef } from "@mui/x-data-
 export const generateColumns = <T extends Record<string, unknown>>(
   data: T,
   mapper: DataGridColumnMapType,
-  deleteFn: (id: number | string) => void
+  deleteFn: (idUser: number | string) => void,
+    updateFn: (idUser: number | string) => void
 ): GridColDef[] => {
   const keys = Object.keys(data) as (keyof T)[];
+  console.log("keys =>", keys); // Delete
+  
 
   const dataColumns = keys
-    .filter((key) => !mapper[String(key)]?.hidden)
+    .filter((key) => key !=="idUser" && key !== "idUserGroup")
     .map((key) => {
       const mapperEntry = mapper[String(key)];
+      console.log("mapperEntry =>", mapperEntry); // Delete
+      
 
       if (!mapperEntry) {
         return {
@@ -34,13 +39,22 @@ export const generateColumns = <T extends Record<string, unknown>>(
       };
     });
 
-  const actionsColumn = {
-    field: "Delete",
-    width: 80,
-    renderCell: (params: any) => (
-      <IconButton onClick={() => deleteFn(params.row.id)}>
-        <Delete color="warning" />
-      </IconButton>
+ const actionsColumn: GridColDef = {
+    field: "actions",
+    headerName: "Actions",
+    width: 120,
+    sortable: false,
+    filterable: false,
+    renderCell: (params) => (
+      <>
+
+        <IconButton onClick={() => deleteFn(params.row.id)}>
+          <Delete color="warning" />
+        </IconButton>
+                <IconButton onClick={() => updateFn(params.row.id)}>
+          <Restore color="primary" />
+        </IconButton>
+      </>
     ),
   };
 
