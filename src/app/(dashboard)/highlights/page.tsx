@@ -19,7 +19,7 @@ const params = `startDate=${startDate}&endDate=${endDate}`;
   
 
   return (
-    <BodyWraper sx={{minHeight:"300px"}}>
+    <BodyWraper sx={{minHeight:"600px"}}>
       <Records<User>
         recordConfig={{ entity: API_ROUTES.transactions.api, params:params }}
         customRender={
