@@ -3,11 +3,10 @@ import { useContextRecords } from "@/context/RecordsContext";
 import { DataGridColumnMapType, DataGridOptions } from "@/types/dataGrid";
 import { GridValidRowModel, DataGrid as MUIDataGrid } from "@mui/x-data-grid";
 import { generateColumns } from "./helpers";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AppDialogContext } from "@/context/AppDialogContext";
 import { useUpdateRecord } from "@/api-connection/record-hooks/useUpdateRecord";
 import { useDeleteRecord } from "@/api-connection/record-hooks/useDeleteRecord";
-import { API_ROUTES } from "@/constants";
 
 type DataGridProps = {
   dataGridColumnMap: DataGridColumnMapType;

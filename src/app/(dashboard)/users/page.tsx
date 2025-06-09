@@ -20,6 +20,7 @@ export default function Users() {
   return (
     <>
       <BodyWraper
+      sx={{minHeight:"200px"}}
         customHeaderRightSide={
           <Button onClick={toggleOpen} variant="contained">
             Create User
@@ -29,7 +30,7 @@ export default function Users() {
         <Records<User>
           recordConfig={{ entity: API_ROUTES.users.api }}
           dataGridColumnMap={usersColumnMap}
-        ></Records>
+        />
       </BodyWraper>
       <CreateUserDialog open={open} toggle={toggleOpen} createRecordFn={createRecord}/>
     </>

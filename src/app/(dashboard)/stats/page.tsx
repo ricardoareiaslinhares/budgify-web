@@ -110,38 +110,29 @@ export default async function Stats() {
 }
  */
 
-"use client"
+"use client";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { API_ROUTES, API_URL } from "@/constants";
-import { TransactionStat, User } from "@/types/entities";;
+import { TransactionStat, User } from "@/types/entities";
 import { Records } from "@/components/records/Records";
 import { TransChart } from "./ClientSideRender/TransChart";
 import { UsersChart } from "./ClientSideRender/UsersChart";
 
-
 export default function Stats() {
   const today = new Date().toISOString();
- 
 
   const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
-  
 
   return (
-    <BodyWraper>
-            <Records<TransactionStat>
-              recordConfig={{ entity: API_ROUTES.transactions.api, params:params }}
-              customRender={
-                <TransChart/>
-              }
-            />
-                  <Records<User>
-                    recordConfig={{ entity: API_ROUTES.users.api, params:"" }}
-                    customRender={
-                      <UsersChart/>
-                    }
-                  />
-
-
+    <BodyWraper sx={{minHeight:"400px"}}>
+      <Records<TransactionStat>
+        recordConfig={{ entity: API_ROUTES.transactions.api, params: params }}
+        customRender={<TransChart />}
+      />
+      <Records<User>
+        recordConfig={{ entity: API_ROUTES.users.api, params: "" }}
+        customRender={<UsersChart />}
+      />
     </BodyWraper>
   );
 }

@@ -6,6 +6,7 @@ import { RecordsContext } from "@/context/RecordsContext";
 import { DataGrid } from "../data-grid/DataGrid";
 import { DataGridColumnMapType, DataGridOptions } from "@/types/dataGrid";
 import { useState } from "react";
+import { Box } from "@mui/material";
 
 type RecordsProps = {
   recordConfig: { entity: string, params?: string };
@@ -39,7 +40,7 @@ export const Records = <T,>({
         <DataGrid<T>
           dataGridColumnMap={dataGridColumnMap!}
           options={dataGridOptions}
-        />
+          />
       )}
     </RecordsContext.Provider>
   );
