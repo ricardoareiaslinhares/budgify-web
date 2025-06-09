@@ -21,6 +21,7 @@ export const BodyWraper = ({ children, customHeaderRightSide, sx}: BodyWraperPro
         position: "absolute",
         display: "flex",
         flexDirection: "column",
+        backgroundColor: theme.palette.background.default,
         pl: 4,
         py: 4,
         m: 0,
