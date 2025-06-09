@@ -2,6 +2,7 @@
 import { LineChart } from "@/components/charts/LineChart";
 import { useContextRecords } from "@/context/RecordsContext";
 import { TransactionStat } from "@/types/entities";
+import { Box } from "@mui/material";
 
 type WeekTransactionsProps = {};
 
@@ -16,12 +17,14 @@ export const WeekTransactions = ({}: WeekTransactionsProps) => {
     y: item.count,
   }));
   return (
-    <LineChart
-      data={chartTransactions}
-      title="Number Trasactions of last 7 days"
-      xAxisLabel="Date"
-      yAxisLabel="Number Transactions"
-      height={500}
-    />
+    <Box minHeight={"300px"}>
+      <LineChart
+        data={chartTransactions}
+        title="Number Trasactions of last 7 days"
+        xAxisLabel="Date"
+        yAxisLabel="Number Transactions"
+        height={500}
+      />
+    </Box>
   );
 };

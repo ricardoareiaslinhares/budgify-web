@@ -1,17 +1,14 @@
-
-"use client"
+"use client";
 import { LineChart } from "@/components/charts/LineChart";
 import { useContextRecords } from "@/context/RecordsContext";
 import { User } from "@/types/entities";
+import { Box } from "@mui/material";
 import { getISOWeek, getYear, parseISO } from "date-fns";
 
-
-
 export const UsersChart = () => {
-      const { data: userData } = useContextRecords<User>();
-      const orderedUsers = [...userData].reverse();
+  const { data: userData } = useContextRecords<User>();
+  const orderedUsers = [...userData].reverse();
   console.log("userData =>", userData); // Delete
-
 
   //-
 
@@ -42,9 +39,9 @@ export const UsersChart = () => {
       x: week,
       y: count,
     }));
-//_
+  //_
   return (
-<>
+    <Box minHeight={"300px"}>
       <LineChart
         data={chartUserPerDay}
         title="New Users per day"
@@ -58,6 +55,7 @@ export const UsersChart = () => {
         xAxisLabel="Date"
         yAxisLabel="Number Users"
         height={500}
-      /></>
+      />
+    </Box>
   );
 };
