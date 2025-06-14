@@ -10,6 +10,7 @@ type MutationArgs<T> = {
 
 export const useUpdateRecord =<T> (entity:string, params="", options?: MutationOptions) => {
   const queryClient = useQueryClient();
+  
   return useMutation<T, void, MutationArgs<T>>({
     mutationFn: ({ data, id }: MutationArgs<T>) => updateRecord(entity, id, data, params),
     onSuccess(data, variables) {
@@ -33,4 +34,3 @@ export const useUpdateRecord =<T> (entity:string, params="", options?: MutationO
     },
   });
 };
-

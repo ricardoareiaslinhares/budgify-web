@@ -70,8 +70,14 @@ const users = data.map(user => {
       rowCount={-1}
       paginationModel={{ page, pageSize }}
       onPaginationModelChange={({ page: newPage, pageSize: newPageSize }) => {
-        if (page > newPage) setPage(page - pageSize);
-        if (page < newPage) setPage(page + pageSize);
+        if (page > newPage) {
+          setPage(page - pageSize)
+          console.log("page>",page-pageSize)
+        }
+        if (page < newPage) {
+          console.log("page<",page+pageSize)
+          setPage(page + pageSize)
+        };
 
         setPageSize(newPageSize);
       }}

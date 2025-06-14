@@ -22,8 +22,9 @@ export const Records = <T,>({
   dataGridOptions,
 }: RecordsProps) => {
   const { entity, params = "" } = recordConfig;
-    const [page, setPage] = useState(0);
+  const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(5);
+  
   const completeParams = `${params}&limit=${pageSize}&offset=${page}`
   console.log("page, pageSize =>", page, pageSize); // Delete
   
