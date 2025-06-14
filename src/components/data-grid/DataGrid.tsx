@@ -14,7 +14,7 @@ type DataGridProps = {
 };
 
 export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
-  const { data, entity, page, pageSize, setPage, setPageSize, muiPage, setMuiPage } =
+  const { data, entity, page, pageSize, setPage, setPageSize} =
     useContextRecords<T & GridValidRowModel>();
 
   const appDialog = useContext(AppDialogContext);
