@@ -60,11 +60,7 @@ export const CreateUserDialog = ({
   } = entityForm;
 
   const onSubmit = async (formData: any) => {
-    console.log("User form submitted:", formData);
-
-    const response = await createRecordFn.mutateAsync({data:formData})
-    console.log("response =>", response); // Delete
-    
+    await createRecordFn.mutateAsync({data:formData})
     toggle();
   };
 

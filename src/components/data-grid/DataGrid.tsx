@@ -14,71 +14,64 @@ type DataGridProps = {
 };
 
 export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
-  const { data, entity, page, pageSize, setPage, setPageSize } =
+  const { data, entity, page, pageSize, setPage, setPageSize, muiPage, setMuiPage } =
     useContextRecords<T & GridValidRowModel>();
-    
+
   const appDialog = useContext(AppDialogContext);
-  const updateRecord = useUpdateRecord(entity, "",{queryInvalidatePrefix:entity});
-    const deleteRecord = useDeleteRecord(entity, "",{queryInvalidatePrefix:entity});
+  const updateRecord = useUpdateRecord(entity, "", {
+    queryInvalidatePrefix: entity,
+  });
+  const deleteRecord = useDeleteRecord(entity, "", {
+    queryInvalidatePrefix: entity,
+  });
 
   const deleteFn = (idUser: string | number) => {
     appDialog?.setContent({
-      description:
-        "Tem a certeza que pretende desativar este utilizador?",
-      title: "Desativar utilizador",
+      description: "Are you sure you want to deactivate this user?",
+      title: "Deactivate User",
     });
 
-
     appDialog?.setAction(() => () => {
-      deleteRecord.mutate({id: idUser });
+      deleteRecord.mutate({ id: idUser });
     });
     appDialog?.toggleOpen();
   };
 
-    const activateFn = (idUser: string | number) => {
+  const activateFn = (idUser: string | number) => {
     appDialog?.setContent({
-      description:
-        "Tem a certeza que pretende ativar este utilizador?",
-      title: "Ativar utilizador",
+      description: "Are you sure you want to activate this user?",
+      title: "Activate User",
     });
 
-
     appDialog?.setAction(() => () => {
-      updateRecord.mutate({ data:{isActive:true}, id: idUser });
+      updateRecord.mutate({ data: { isActive: true }, id: idUser });
     });
     appDialog?.toggleOpen();
   };
 
-  const columnsDynamic = data.length > 0 ? generateColumns(data[0], dataGridColumnMap, deleteFn,activateFn) : [];
+  const columnsDynamic =
+    data.length > 0
+      ? generateColumns(data[0], dataGridColumnMap, deleteFn, activateFn)
+      : [];
 
-  console.log("Mui Data Grid data =>", data); // Delete
-
-const users = data.map(user => {
-  const { idUser, ...rest } = user;
-  return {
-    ...rest,
-    id: idUser,
-  };
-});
+  const users = data.map((user) => {
+    const { idUser, ...rest } = user;
+    return {
+      ...rest,
+      id: idUser,
+    };
+  });
 
   return (
     <MUIDataGrid
       rows={users}
       columns={columnsDynamic}
-     // onRowClick={({ row: { email } }) => handleNavigateDetails(id)}
       paginationMode="server"
       rowCount={-1}
       paginationModel={{ page, pageSize }}
+       pageSizeOptions={[5]} 
       onPaginationModelChange={({ page: newPage, pageSize: newPageSize }) => {
-        if (page > newPage) {
-          setPage(page - pageSize)
-          console.log("page>",page-pageSize)
-        }
-        if (page < newPage) {
-          console.log("page<",page+pageSize)
-          setPage(page + pageSize)
-        };
-
+        setPage(newPage)
         setPageSize(newPageSize);
       }}
       sx={{

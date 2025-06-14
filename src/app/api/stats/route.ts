@@ -3,17 +3,20 @@ import { API_URL, API_ROUTES } from "@/constants";
 import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url)
-    const cookieStore = await cookies();
-    const token = cookieStore.get("auth-token")?.value;
- console.log("IMHERE---------------------------- =>",searchParams.toString()); // Delete
-  
-console.log("req.url =>", req.url); // Delete
+  const { searchParams } = new URL(req.url);
+  const cookieStore = await cookies();
+  const token = cookieStore.get("auth-token")?.value;
 
-  const response = await fetch(`${API_URL}${API_ROUTES.transactions.be}?${searchParams.toString()}`, {
-    //method: "GET",
-    headers: { "Content-Type": "application/json",Authorization: `Bearer ${token}`, },
-  });
+  const response = await fetch(
+    `${API_URL}${API_ROUTES.transactions.be}?${searchParams.toString()}`,
+    {
+      //method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   if (!response.ok) {
     const text = await response.text();
@@ -21,12 +24,6 @@ console.log("req.url =>", req.url); // Delete
   }
 
   const data = await response.json();
-
-const responseData = NextResponse.json(data);
-
-return responseData;
-console.log("responseData =>", responseData); // Delete
-
-
-
+  const responseData = NextResponse.json(data);
+  return responseData;
 }

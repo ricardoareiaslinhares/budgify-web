@@ -1,7 +1,7 @@
 import { DataGridColumnMapType } from "@/types/dataGrid";
 import { Delete, Restore } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { GridActionsCellItem, GridActionsColDef, GridColDef } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 
 /* 
   Fn gets the data to use the keys and match them in a custom mapper
@@ -13,23 +13,18 @@ export const generateColumns = <T extends Record<string, unknown>>(
   data: T,
   mapper: DataGridColumnMapType,
   deleteFn: (idUser: number | string) => void,
-    updateFn: (idUser: number | string) => void
+  updateFn: (idUser: number | string) => void
 ): GridColDef[] => {
   const keys = Object.keys(data) as (keyof T)[];
-  console.log("keys =>", keys); // Delete
-  
-
   const dataColumns = keys
-    .filter((key) => key !=="idUser" && key !== "idUserGroup")
+    .filter((key) => key !== "idUser" && key !== "idUserGroup")
     .map((key) => {
       const mapperEntry = mapper[String(key)];
-      console.log("mapperEntry =>", mapperEntry); // Delete
-      
 
       if (!mapperEntry) {
         return {
           field: String(key),
-          headerName: presentableDBkey(String(key)),
+          headerName: presentablekey(String(key)),
         };
       }
 
@@ -39,7 +34,7 @@ export const generateColumns = <T extends Record<string, unknown>>(
       };
     });
 
- const actionsColumn: GridColDef = {
+  const actionsColumn: GridColDef = {
     field: "actions",
     headerName: "Actions",
     width: 120,
@@ -47,11 +42,10 @@ export const generateColumns = <T extends Record<string, unknown>>(
     filterable: false,
     renderCell: (params) => (
       <>
-
         <IconButton onClick={() => deleteFn(params.row.id)}>
           <Delete color="warning" />
         </IconButton>
-                <IconButton onClick={() => updateFn(params.row.id)}>
+        <IconButton onClick={() => updateFn(params.row.id)}>
           <Restore color="primary" />
         </IconButton>
       </>
@@ -60,7 +54,7 @@ export const generateColumns = <T extends Record<string, unknown>>(
 
   return [...dataColumns, actionsColumn];
 };
-const presentableDBkey = (s: string) => {
+const presentablekey = (s: string) => {
   return s
     .replace(/_/g, " ") // Replace underscores with spaces first
     .replace(/([A-Z])/g, " $1") // Add space before capital letters

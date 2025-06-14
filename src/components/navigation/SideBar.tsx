@@ -26,12 +26,13 @@ import {
 import React, { SetStateAction, useContext, useEffect } from "react";
 import { TopBar } from "./TopBar";
 import { SideBarContext } from "@/context/SideBarContext";
-import { DRAWER_WIDTH, PAGE_ROUTES, TOP_BAR_HEIGHT } from "@/constants";
+import { API_ROUTES, DRAWER_WIDTH, PAGE_ROUTES, TOP_BAR_HEIGHT } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import axios from "axios";
 
 type SideBarProps = {
-  userName: string
+  userName: string;
   children?: React.ReactNode;
 };
 
@@ -39,7 +40,7 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
   const theme = useTheme();
   const { openSideBar, setOpenSideBar } = useContext(SideBarContext);
 
-    const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (isMobile) {
@@ -50,14 +51,32 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
   const router = useRouter();
   const currentPath = usePathname();
 
+  const handleLogout = async () => {
+        await axios.post(API_ROUTES.logout.api);
+        router.push(PAGE_ROUTES.login.path)
+        
+  }
+
   const drawerItems = [
-    { label: PAGE_ROUTES.highlights.name, path: PAGE_ROUTES.highlights.path, icon: <HomeIcon /> },
-    { label: PAGE_ROUTES.stats.name, path: PAGE_ROUTES.stats.path, icon: <InsightsIcon /> },
-    { label: PAGE_ROUTES.users.name, path: PAGE_ROUTES.users.path, icon: <GroupIcon /> },
+    {
+      label: PAGE_ROUTES.highlights.name,
+      path: PAGE_ROUTES.highlights.path,
+      icon: <HomeIcon />,
+    },
+    {
+      label: PAGE_ROUTES.stats.name,
+      path: PAGE_ROUTES.stats.path,
+      icon: <InsightsIcon />,
+    },
+    {
+      label: PAGE_ROUTES.users.name,
+      path: PAGE_ROUTES.users.path,
+      icon: <GroupIcon />,
+    },
   ];
 
   return (
-    <Box sx={{ display:"flex" }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <TopBar />
 
@@ -76,7 +95,11 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
         anchor="left"
         open={openSideBar}
       >
-        <DrawerHeader theme={theme} setOpenSideBar={setOpenSideBar} userName={userName} />
+        <DrawerHeader
+          theme={theme}
+          setOpenSideBar={setOpenSideBar}
+          userName={userName}
+        />
         <List
           sx={{
             display: "flex",
@@ -95,7 +118,7 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
-                   sx={{
+                    sx={{
                       "&:hover": {
                         backgroundColor: theme.palette.primary.light,
                       },
@@ -133,7 +156,7 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
             }}
           >
             <IconButton
-              onClick={() => console.log("Logout clicked")}
+              onClick={handleLogout}
               sx={{
                 "&:hover": {
                   backgroundColor: theme.palette.background.paper,
@@ -153,10 +176,14 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
 
 type DrawerHeaderProps = {
   theme: Theme;
-  userName:string;
+  userName: string;
   setOpenSideBar: React.Dispatch<SetStateAction<boolean>>;
 };
-const DrawerHeader = ({ theme, setOpenSideBar,userName }: DrawerHeaderProps) => {
+const DrawerHeader = ({
+  theme,
+  setOpenSideBar,
+  userName,
+}: DrawerHeaderProps) => {
   return (
     <Box
       sx={{
@@ -177,7 +204,7 @@ const DrawerHeader = ({ theme, setOpenSideBar,userName }: DrawerHeaderProps) => 
     </Box>
   );
 };
-type AvatarProps = { name: string, };
+type AvatarProps = { name: string };
 const Avatar = ({ name }: AvatarProps) => {
   return (
     <Box

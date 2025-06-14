@@ -15,7 +15,7 @@ export const ErrorFetch = ({}: ErrorFetchProps) => {
       }}
     >
       <Typography variant="h5">
-        Não foi possível carregar os dados. Tente novamente ou mais tarde
+      Unable to load the data. Please try again or come back later.
       </Typography>
     </Box>
   );

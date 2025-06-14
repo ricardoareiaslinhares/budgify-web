@@ -7,21 +7,19 @@ import { User } from "@/types/entities";
 
 export const useAuth = () => {
   const { data, error, isLoading, isSuccess } = useRecords<User>(API_ROUTES.user.api, "");
-  console.log("data from useAuth2 =>", data); // Delete
-
   const user = data as unknown as User
-  console.log("use------------ =>", user); // Delete
-  
   
     return {
-    isAuthenticated: isSuccess && !!data,
+    isAuthenticated: isSuccess && !error && !!data,
     user: user || null,
     isLoading,
   }; 
  
+  //To navigate withou BE connection:
+  /*   
     return {
     isAuthenticated: true,
     user: {name:"fake"},
     isLoading: false
-  };
+  }; */
 }

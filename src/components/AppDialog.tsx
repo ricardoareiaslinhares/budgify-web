@@ -13,8 +13,6 @@ import { useContext } from "react";
 type onCloseReason = "backdropClick" | "escapeKeyDown";
 
 export const AppDialog = () => {
-  console.log("caledssss v =>"); // Delete
-
   const appDialog = useContext(AppDialogContext)!;
 
   const handleClose = (e: any, reason: onCloseReason) => {

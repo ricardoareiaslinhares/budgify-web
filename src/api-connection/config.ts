@@ -10,10 +10,11 @@ export const api = axios.create({
   },
 });
 
-/*  api.interceptors.request.use((config) =>  {
-  //const token = localStorage.getItem("authToken");
+// If we would not use the next api routes, we could handle the token this way (uncomenting all commented code):
+// Also uncoment the set Token on localS on LoginForm
 
-    const token = getTokenFromCookies();
+/*  api.interceptors.request.use((config) =>  {
+  const token = localStorage.getItem("authToken");
   
   if (token) {
     console.log("token =>", token); // Delete
@@ -21,15 +22,5 @@ export const api = axios.create({
   }
   return config;
 }); 
- 
 
-function getTokenFromCookies() {
-  const match = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("auth-token="));
-  return match?.split("=")[1];
-} */
-
-    /* 
-  I dont know why, but the localstorage method stoped working as soon i set the cookie in api/route. now only works if i get it from the cookies
-  */
+ */

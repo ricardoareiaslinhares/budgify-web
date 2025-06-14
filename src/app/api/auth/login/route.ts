@@ -4,7 +4,7 @@ import { API_URL, API_ROUTES } from "@/constants";
 export async function POST(req: Request) {
   const body = await req.json();
 
-  console.log(`${API_URL}${API_ROUTES.login.be}`)
+  console.log(`${API_URL}${API_ROUTES.login.be}`);
   const response = await fetch(`${API_URL}${API_ROUTES.login.be}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -19,16 +19,14 @@ export async function POST(req: Request) {
   const data = await response.json();
   const token = data.data.token;
 
-const responseData = NextResponse.json(data);
-responseData.cookies.set({
-  name: "auth-token",
-  value: token,
-  //httpOnly: true,
-  path: "/",
-  maxAge: 60 * 60 * 24 * 7,
-  sameSite: "lax",
-});
-return responseData;
-
-
+  const responseData = NextResponse.json(data);
+  responseData.cookies.set({
+    name: "auth-token",
+    value: token,
+    //httpOnly: true,
+    path: "/",
+    maxAge: 60 * 60 * 24 * 7,
+    sameSite: "lax",
+  });
+  return responseData;
 }

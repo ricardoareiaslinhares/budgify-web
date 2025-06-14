@@ -1,50 +1,37 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Box, Grid, Typography, Button } from "@mui/material";
 
 import { useForm, Controller } from "react-hook-form";
 import { LabeledTextField } from "@/components/LabelTextField";
 import { useLogin } from "@/hooks/useLogin";
+import { AxiosError } from "axios";
 
 type LoginProps = {};
 
 export function LoginForm({}: LoginProps) {
-  const {mutate, error, isError} = useLogin();
-  /*     const [formErrors, setFormErrors] = useState<AuthErrors>();
+  const { mutate, error, isError } = useLogin();
+  const [loginError, setLoginError] = useState<string | null>(null);
 
-
-
- 
-
-    useEffect(() => {
-        if (isError && error) {
-            setFormErrors(error.response?.data as AuthErrors);
-        }
-    }, [isError, error]); */
-
-  const [formErrors, setFormErrors] = useState();
+  useEffect(() => {
+    if (isError && error) {
+      const axiosError = error as AxiosError;
+      if (axiosError.response?.status === 500) {
+        setLoginError("Email or password incorrect");
+      } else {
+        setLoginError("Something went wrong. Please try again.");
+      }
+    }
+  }, [isError, error]);
 
   type LoginFormInputs = { email: string; password: string };
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors: fieldErrors },
-  } = useForm<LoginFormInputs>();
+  const { handleSubmit, control } = useForm<LoginFormInputs>();
 
-
-   const onSubmit = async (data:LoginFormInputs) => {
-         mutate(data);
-        //console.log("result =>", result.data); // Delete
-          //localStorage.setItem("authToken",  result.data.token)
-
-        
-    };
+  const onSubmit = async (data: LoginFormInputs) => {
+    mutate(data);
+    //localStorage.setItem("authToken",  result.data.token)
+  };
 
   return (
     <Grid
@@ -71,7 +58,7 @@ export function LoginForm({}: LoginProps) {
           component="form"
           noValidate
           onSubmit={handleSubmit(onSubmit)}
-          sx={{ mt: 1, mx:4 }}
+          sx={{ mt: 1, mx: 4 }}
         >
           <Controller
             name="email"
@@ -91,9 +78,7 @@ export function LoginForm({}: LoginProps) {
               />
             )}
           />
-          {fieldErrors.email && (
-            <Typography color="error">{"fieldErrors.email.message"}</Typography>
-          )}
+
           <Controller
             name="password"
             control={control}
@@ -112,19 +97,13 @@ export function LoginForm({}: LoginProps) {
               />
             )}
           />
-          {fieldErrors.password && (
-            <Typography color="error">
-              {"fieldErrors.password.message"}
+
+          {loginError && (
+            <Typography color="error" sx={{ mt: 2 }}>
+              {loginError}
             </Typography>
           )}
 
-          {/*      {formErrors
-                        ? formErrors.errors.map((error: any) => (
-                              <Typography color="error" key={error.message}>
-                                  {error.message}
-                              </Typography>
-                          ))
-                        : null} */}
           <Button
             type="submit"
             fullWidth

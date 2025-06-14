@@ -1,11 +1,6 @@
-import { BodyWraper } from "@/components/body-wraper/BodyWraper";
+import { PAGE_ROUTES } from "@/constants";
 import { redirect } from "next/navigation";
 
 export default function Home() {
-  redirect('/highlights')
-  return (
-<BodyWraper>
-<p>Home</p>
-</BodyWraper>
-  );
+  redirect(PAGE_ROUTES.login.path)
 }
