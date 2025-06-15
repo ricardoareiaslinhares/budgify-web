@@ -4,13 +4,13 @@ import { Loading } from "../Loading";
 import { ErrorFetch } from "../ErrorFetch";
 import { RecordsContext } from "@/context/RecordsContext";
 import { DataGrid } from "../data-grid/DataGrid";
-import { DataGridColumnMapType, DataGridOptions } from "@/types/dataGrid";
+import { DataGridColumnMapType, DataGridOptionsType } from "@/types/dataGrid";
 import { useState } from "react";
 
 type RecordsProps = {
   recordConfig: { entity: string; params?: string };
   dataGridColumnMap?: DataGridColumnMapType;
-  dataGridOptions?: DataGridOptions;
+  dataGridOptions?: DataGridOptionsType;
   customRender?: React.ReactNode;
 };
 

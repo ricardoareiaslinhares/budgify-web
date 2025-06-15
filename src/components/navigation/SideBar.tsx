@@ -75,6 +75,11 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
     },
   ];
 
+  const handleNaviagtion = (path: string) => {
+    router.push(path)
+    if (isMobile) setOpenSideBar(false)
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -127,7 +132,7 @@ export const SideBar = ({ children, userName }: SideBarProps) => {
                         color: theme.palette.primary.main,
                       },
                     }}
-                    onClick={() => router.push(item.path)}
+                    onClick={() => handleNaviagtion(item.path)}
                     selected={isSelected}
                   >
                     <Box

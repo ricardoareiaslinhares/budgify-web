@@ -4,6 +4,7 @@ import { PAGE_ROUTES } from "@/constants";
 import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import { SideBarContext } from "@/context/SideBarContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const HEADER_HEIGHT = 70;
 
@@ -16,6 +17,7 @@ export const Header = ({ children}: HeaderProps) => {
   const currentPageName = Object.values(PAGE_ROUTES).find(route => route.path === pathname)?.name
 
     const { openSideBar } = useContext(SideBarContext);
+    const isMobile = useIsMobile()
 
   return (
     <Box
@@ -34,7 +36,7 @@ export const Header = ({ children}: HeaderProps) => {
       })}
     >
       <Typography variant="h4" fontWeight="bold">{currentPageName}</Typography>
-      <Box visibility={openSideBar ? "hidden" : "visible"}>
+      <Box visibility={openSideBar && isMobile ? "hidden" : "visible"}>
       {children}
       </Box>
     </Box>
