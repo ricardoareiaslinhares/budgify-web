@@ -25,7 +25,6 @@ export const Records = <T,>({
   const [pageSize, setPageSize] = useState(5);
 
   const offset = page * pageSize;
-
   const completeParams = `${params}&limit=${pageSize}&offset=${offset}`;
   const { data, error, isLoading } = useRecords(entity, completeParams);
 

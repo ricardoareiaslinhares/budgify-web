@@ -10,11 +10,20 @@ export type DataGridColumnMapType = {
   [key: string]: Partial<GridColDef> & Partial<GridColDefExtraSettingsType>;
 };
 
-export type DataGridOptions = {
+export type DataGridOptionsType = {
   dataGridProps: Partial<
     Omit<MUIDataGridProps, "columns" | "rows" | "onRowClick">
   >;
   extraOptions: {
-    navigateDetails: string;
+    navigateDetails?: string;
+    updateAction?: {
+      title: string;
+      description: string;
+      payload: Record<string, any>;
+    };
+    deleteAction?: {
+      title: string;
+      description: string;
+    };
   };
 };

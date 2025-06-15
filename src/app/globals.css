@@ -14,7 +14,6 @@
   --bg-blue-tab-name: #5F89BF;
   --bg-blue-tab: #E7F0FA;
   
-  /* 30% alpha versions */
   --bg-blue-30: #528AC44D;
   --bg-green-30: #94D06C4D;
   --bg-purple-30: #9747FF4D;
@@ -22,12 +21,6 @@
   --bg-red-30: #FF4D4D4D;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 html,
 body {
@@ -37,8 +30,6 @@ body {
 
 body {
   color: var(--foreground);
-  background: "red";
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -53,10 +44,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
- */

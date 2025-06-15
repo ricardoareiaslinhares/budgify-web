@@ -1,5 +1,6 @@
 "use client";
 
+import { GENRES } from "@/constants";
 import { UserCreate } from "@/types/entities";
 import {
   Dialog,
@@ -20,12 +21,6 @@ import {
 } from "@mui/material";
 import { UseMutationResult } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
-
-const genres = [
-  { label: "Male", value: 0 },
-  { label: "Female", value: 1 },
-  { label: "Other", value: 2 },
-];
 
 type CreateUserDialogProps = {
   open: boolean;
@@ -151,7 +146,7 @@ export const CreateUserDialog = ({
                     <FormControl fullWidth>
                       <InputLabel id="genre-label">Genre</InputLabel>
                       <Select labelId="genre-label" label="Genre" {...field}>
-                        {genres.map((option) => (
+                        {GENRES.map((option) => (
                           <MenuItem key={option.value} value={option.value}>
                             {option.label}
                           </MenuItem>

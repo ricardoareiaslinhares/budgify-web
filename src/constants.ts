@@ -1,6 +1,12 @@
 export const TOP_BAR_HEIGHT = 70
 export const DRAWER_WIDTH = 240;
 
+export const GENRES = [
+  { label: "Male", value: 0 },
+  { label: "Female", value: 1 },
+  { label: "Other", value: -1 },
+];
+
 export const PAGE_ROUTES = {
   highlights: { path: "/highlights", name: "Highlights" },
   stats: { path: "/stats", name: "Statistics" },

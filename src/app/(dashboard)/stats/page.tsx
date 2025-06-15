@@ -1,56 +1,54 @@
-// The commented file does SSR but the server needs to be HTTPS for it to work in production
-
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
 import { API_ROUTES, API_URL } from "@/constants";
 import { TransactionStat, User } from "@/types/entities";
 import { cookies } from "next/headers";
 import { getISOWeek, getYear, parseISO } from "date-fns";
-
-
+import { ErrorFetch } from "@/components/ErrorFetch";
 
 export default async function Stats() {
   const today = new Date().toISOString();
   const cookieStore = await cookies();
   const token = cookieStore.get("auth-token")?.value;
 
-  const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
-  const response = await fetch(
-    `${API_URL}${API_ROUTES.transactions.be}?${params}`,
-    {
+  const statsParams = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
+
+  const [response, responseUser] = await Promise.all([
+    fetch(`${API_URL}${API_ROUTES.transactions.be}?${statsParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       cache: "no-store",
-    }
-  );
+    }),
+    fetch(`${API_URL}${API_ROUTES.users.be}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    }),
+  ]);
+
+  if (!response.ok || !responseUser.ok) return <ErrorFetch />;
+
   const data = await response.json();
-
-  console.log("data Stats=>", data); // Delete
-
-  const transactionsData: Array<TransactionStat> = data.data;
-
-  const responseUser = await fetch(`${API_URL}${API_ROUTES.users.be}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    cache: "no-store",
-  });
   const dataUser = await responseUser.json();
-  const userData: Array<User> = dataUser.data;
-  const orderedUsers = [...userData].reverse();
-  console.log("userData =>", userData); // Delete
+
+  // Trans Charts
+  const transactionsData: Array<TransactionStat> = data.data;
 
   const chartTransactions = transactionsData.map((item) => ({
     x: new Date(item.date).toLocaleDateString("pt-PT"),
     y: item.count,
   }));
 
-  //-
+  // User Charts
+  const userData: Array<User> = dataUser.data;
+  const orderedUsers = [...userData].reverse();
+  console.log("userData =>", userData); // Delete
 
   const usersPerDay = orderedUsers.reduce((acc, user) => {
     const date = user.creationDate;
@@ -62,7 +60,7 @@ export default async function Stats() {
     x: new Date(date).toLocaleDateString("pt-PT"),
     y: count,
   }));
-  //_
+
   const usersPerWeek = orderedUsers.reduce((acc, user) => {
     const date = parseISO(user.creationDate);
     const week = getISOWeek(date);
@@ -79,7 +77,7 @@ export default async function Stats() {
       x: week,
       y: count,
     }));
-//_
+
 
   return (
     <BodyWraper>
@@ -107,7 +105,8 @@ export default async function Stats() {
     </BodyWraper>
   );
 }
- 
+
+// No ssr version:
 /* 
 "use client";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
@@ -120,12 +119,12 @@ import { UsersChart } from "./ClientSideRender/UsersChart";
 export default function Stats() {
   const today = new Date().toISOString();
 
-  const params = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
+  const statsParams = `startDate=2023-12-06T23:56:08.606Z&endDate=${today}`;
 
   return (
     <BodyWraper sx={{minHeight:"400px"}}>
       <Records<TransactionStat>
-        recordConfig={{ entity: API_ROUTES.transactions.api, params: params }}
+        recordConfig={{ entity: API_ROUTES.transactions.api, params: statsParams }}
         customRender={<TransChart />}
       />
       <Records<User>

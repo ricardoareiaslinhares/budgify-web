@@ -1,6 +1,6 @@
 "use client";
 import { useContextRecords } from "@/context/RecordsContext";
-import { DataGridColumnMapType, DataGridOptions } from "@/types/dataGrid";
+import { DataGridColumnMapType, DataGridOptionsType } from "@/types/dataGrid";
 import { GridValidRowModel, DataGrid as MUIDataGrid } from "@mui/x-data-grid";
 import { generateColumns } from "./helpers";
 import { useContext } from "react";
@@ -10,7 +10,7 @@ import { useDeleteRecord } from "@/api-connection/record-hooks/useDeleteRecord";
 
 type DataGridProps = {
   dataGridColumnMap: DataGridColumnMapType;
-  options?: DataGridOptions;
+  options?: DataGridOptionsType;
 };
 
 export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
@@ -25,26 +25,30 @@ export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
     queryInvalidatePrefix: entity,
   });
 
-  const deleteFn = (idUser: string | number) => {
+  const deleteFn = (id: string | number) => {
+    const action = options?.extraOptions.deleteAction
+    if (!action) return
     appDialog?.setContent({
-      description: "Are you sure you want to deactivate this user?",
-      title: "Deactivate User",
+      title: action.title,
+      description: action.description,
     });
 
     appDialog?.setAction(() => () => {
-      deleteRecord.mutate({ id: idUser });
+      deleteRecord.mutate({ id: id });
     });
     appDialog?.toggleOpen();
   };
 
-  const activateFn = (idUser: string | number) => {
+  const activateFn = (id: string | number) => {
+    const action = options?.extraOptions.updateAction
+    if (!action) return
     appDialog?.setContent({
-      description: "Are you sure you want to activate this user?",
-      title: "Activate User",
+      title: action.title,
+      description: action.description,
     });
 
     appDialog?.setAction(() => () => {
-      updateRecord.mutate({ data: { isActive: true }, id: idUser });
+      updateRecord.mutate({ data: action.payload, id: id });
     });
     appDialog?.toggleOpen();
   };

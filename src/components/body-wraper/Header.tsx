@@ -1,13 +1,21 @@
+"use client"
+import { usePathname } from "next/navigation";
 import { PAGE_ROUTES } from "@/constants";
 import { Box, Typography } from "@mui/material";
+import { useContext } from "react";
+import { SideBarContext } from "@/context/SideBarContext";
 
 const HEADER_HEIGHT = 70;
 
-type HeaderProps = {pathname:string, children?: React.ReactNode};
+type HeaderProps = {
+  children?: React.ReactNode
+};
 
-export const Header = ({pathname, children}: HeaderProps) => {
-
+export const Header = ({ children}: HeaderProps) => {
+  const pathname = usePathname();
   const currentPageName = Object.values(PAGE_ROUTES).find(route => route.path === pathname)?.name
+
+    const { openSideBar } = useContext(SideBarContext);
 
   return (
     <Box
@@ -17,14 +25,18 @@ export const Header = ({pathname, children}: HeaderProps) => {
         display: "flex",
         width: "100%",
         alignItems: "center",
-        paddingX: 4,
+        paddingX: {xs:1, sm: 2, md: 4},
         borderRadius:2,
         justifyContent:"space-between",
-        overflowX:"auto",
+        overflowX:"hidden",
+        gap: 1,
+
       })}
     >
       <Typography variant="h4" fontWeight="bold">{currentPageName}</Typography>
+      <Box visibility={openSideBar ? "hidden" : "visible"}>
       {children}
+      </Box>
     </Box>
   );
 };

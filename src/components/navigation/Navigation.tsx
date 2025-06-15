@@ -1,6 +1,6 @@
 "use client"
 import { SideBarContext, SideBarProvider } from '@/context/SideBarContext'
-import { Box, styled } from '@mui/material'
+import { Box} from '@mui/material'
 import { SideBar } from './SideBar'
 import { useContext } from 'react';
 import { Footer } from '../Footer';
@@ -53,10 +53,8 @@ type MainProps = {
           overflow:"auto",
           display: "flex",
           flex: 1,
-          flexGrow: 1,
           height:"100vh",
           marginTop: `${TOP_BAR_HEIGHT}px`,
-
           flexDirection: "column",
           justifyContent: "space-between",
           backgroundColor: theme.palette.background.default,

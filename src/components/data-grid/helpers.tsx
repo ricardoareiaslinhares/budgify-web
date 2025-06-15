@@ -16,8 +16,9 @@ export const generateColumns = <T extends Record<string, unknown>>(
   updateFn: (idUser: number | string) => void
 ): GridColDef[] => {
   const keys = Object.keys(data) as (keyof T)[];
+  
   const dataColumns = keys
-    .filter((key) => key !== "idUser" && key !== "idUserGroup")
+    .filter((key) => !mapper[String(key)]?.hidden)
     .map((key) => {
       const mapperEntry = mapper[String(key)];
 

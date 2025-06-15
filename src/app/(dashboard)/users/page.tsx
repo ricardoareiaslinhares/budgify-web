@@ -1,6 +1,6 @@
 "use client";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
-import { usersColumnMap } from "./dataGridSettings";
+import { usersColumnMap, usersOptions } from "./usersDataGridSettings";
 import { Records } from "@/components/records/Records";
 import { API_ROUTES } from "@/constants";
 import { User, UserCreate } from "@/types/entities";
@@ -30,6 +30,7 @@ export default function Users() {
         <Records<User>
           recordConfig={{ entity: API_ROUTES.users.api }}
           dataGridColumnMap={usersColumnMap}
+          dataGridOptions={usersOptions}
         />
       </BodyWraper>
       <CreateUserDialog open={open} toggle={toggleOpen} createRecordFn={createRecord}/>

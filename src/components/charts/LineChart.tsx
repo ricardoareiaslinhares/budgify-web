@@ -7,11 +7,10 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer
 } from 'recharts';
 
-export interface ChartDataPoint {
+export type ChartDataPoint = {
   x: string | number;
   y: number;
   label?: string;
@@ -28,55 +27,67 @@ export type LineChartProps = {
 
 export const LineChart = ({data, title, xAxisLabel, yAxisLabel, width, height}: LineChartProps) => {
 return (
-    <Paper elevation={3} sx={{ p: 3, m: 2 }}>
-      {title && (
-        <Typography variant="h5" component="h2" gutterBottom align="center">
-          {title}
-        </Typography>
-      )}
-      <Box sx={{ width: '100%', height: height }}>
-        <ResponsiveContainer>
-          <LineChartRechart
-            data={data}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 60,
+  <Paper elevation={3} sx={{ pt:3, pX:2, m: 2, }}>
+    {title && (
+      <Typography
+        variant="h5"
+        component="h2"
+        gutterBottom
+        align="center"
+        
+        sx={{
+            px: { xs: 1, sm: 2 },
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {title}
+      </Typography>
+    )}
+    <Box sx={{ width: "100%", height: height }}>
+      <ResponsiveContainer>
+        <LineChartRechart
+          data={data}
+          margin={{
+            top: 20,
+            right: 30,
+            left: 20,
+            bottom: 60,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="x"
+            label={{
+              value: xAxisLabel,
+              position: "insideBottom",
+              offset: -10,
             }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis 
-              dataKey="x"
-              label={{ 
-                value: xAxisLabel, 
-                position: 'insideBottom', 
-                offset: -10 
-              }}
-            />
-            <YAxis
-              label={{ 
-                value: yAxisLabel, 
-                angle: -90, 
-                position: 'insideLeft' 
-              }}
-            />
-            <Tooltip 
-              formatter={(value: number, name: string) => [value, yAxisLabel]}
-              labelFormatter={(label: string) => `${xAxisLabel}: ${label}`}
-            />
+          />
+          <YAxis
+            label={{
+              value: yAxisLabel,
+              angle: -90,
+              position: "insideLeft",
+            }}
+          />
+          <Tooltip
+            formatter={(value: number, name: string) => [value, yAxisLabel]}
+            labelFormatter={(label: string) => `${xAxisLabel}: ${label}`}
+          />
 
-            <Line
-              type="monotone"
-              dataKey="y"
-              stroke="#2196f3"
-              strokeWidth={2}
-              dot={{ fill: '#2196f3', strokeWidth: 2, r: 4 }}
-              activeDot={{ r: 6, stroke: '#2196f3', strokeWidth: 2 }}
-            />
-          </LineChartRechart>
-        </ResponsiveContainer>
-      </Box>
-    </Paper>
-  );
+          <Line
+            type="monotone"
+            dataKey="y"
+            stroke="#2196f3"
+            strokeWidth={2}
+            dot={{ fill: "#2196f3", strokeWidth: 2, r: 4 }}
+            activeDot={{ r: 6, stroke: "#2196f3", strokeWidth: 2 }}
+          />
+        </LineChartRechart>
+      </ResponsiveContainer>
+    </Box>
+  </Paper>
+);
 };
