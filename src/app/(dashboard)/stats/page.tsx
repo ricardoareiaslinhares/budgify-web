@@ -1,3 +1,4 @@
+/* 
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
 import { API_ROUTES, API_URL } from "@/constants";
@@ -105,9 +106,9 @@ export default async function Stats() {
     </BodyWraper>
   );
 }
-
+ */
 // No ssr version:
-/* 
+
 "use client";
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { API_ROUTES, API_URL } from "@/constants";
@@ -134,4 +135,4 @@ export default function Stats() {
     </BodyWraper>
   );
 }
- */
+ 
