@@ -30,7 +30,6 @@ export function LoginForm({}: LoginProps) {
 
   const onSubmit = async (data: LoginFormInputs) => {
     mutate(data);
-    //localStorage.setItem("authToken",  result.data.token)
   };
 
   return (
