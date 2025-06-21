@@ -2,12 +2,12 @@ import { GENRES } from "@/constants";
 import { DataGridColumnMapType, DataGridOptionsType } from "@/types/dataGrid";
 
 export const usersColumnMap: DataGridColumnMapType = {
-  idUser: {
-    //hidden: true,
+/*   idUser: {
+    hidden: true,
   },
   idUserGroup: {
-    //hidden: true,
-  },
+    hidden: true,
+  }, */
   profilePic: {
     hidden: true,
   },
