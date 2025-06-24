@@ -34,8 +34,6 @@ export const useCreateRecord = <T>(
       });
     },
     onError(error) {
-        console.log("error =>", error); // Delete
-        
       return error
     },
   });

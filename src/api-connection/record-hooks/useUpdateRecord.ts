@@ -28,8 +28,6 @@ export const useUpdateRecord =<T> (entity:string, params="", options?: MutationO
       });
     },
     onError(error) {
-        console.log("error =>", error); // Delete
-        
       return error
     },
   });

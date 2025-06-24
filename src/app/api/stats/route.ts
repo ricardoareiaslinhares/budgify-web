@@ -10,7 +10,6 @@ export async function GET(req: Request) {
   const response = await fetch(
     `${API_URL}${API_ROUTES.transactions.be}?${searchParams.toString()}`,
     {
-      //method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

@@ -1,3 +1,5 @@
+// Bellow is the SSR version that runs on production
+
 /* 
 import { BodyWraper } from "@/components/body-wraper/BodyWraper";
 import { LineChart } from "@/components/charts/LineChart";
@@ -49,7 +51,6 @@ export default async function Stats() {
   // User Charts
   const userData: Array<User> = dataUser.data;
   const orderedUsers = [...userData].reverse();
-  console.log("userData =>", userData); // Delete
 
   const usersPerDay = orderedUsers.reduce((acc, user) => {
     const date = user.creationDate;

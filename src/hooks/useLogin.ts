@@ -22,7 +22,6 @@ const login = async (loginData: {
     const response = await axios.post(API_ROUTES.login.api, loginData);
       return response.data;
   } catch (error) {
-      console.log("Error on useLogin", error);
       throw error;
   }
 };

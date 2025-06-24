@@ -22,7 +22,7 @@ export const Records = <T,>({
 }: RecordsProps) => {
   const { entity, params = "" } = recordConfig;
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
 
   const offset = page * pageSize;
   const completeParams = `${params}&limit=${pageSize}&offset=${offset}`;

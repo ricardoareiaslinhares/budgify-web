@@ -26,7 +26,6 @@ export const useDeleteRecord = <T>(entity: string, params = "", options?: Mutati
       });
     },
     onError(error) {
-      console.log("Delete error =>", error);
       return error;
     },
   });

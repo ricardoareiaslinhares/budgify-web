@@ -8,10 +8,8 @@ import { getISOWeek, getYear, parseISO } from "date-fns";
 export const UsersChart = () => {
   const { data: userData } = useContextRecords<User>();
   const orderedUsers = [...userData].reverse();
-  console.log("userData =>", userData); // Delete
 
   //-
-
   const usersPerDay = orderedUsers.reduce((acc, user) => {
     const date = user.creationDate;
     acc[date] = (acc[date] || 0) + 1;
@@ -23,6 +21,7 @@ export const UsersChart = () => {
     y: count,
   }));
   //_
+
   const usersPerWeek = orderedUsers.reduce((acc, user) => {
     const date = parseISO(user.creationDate);
     const week = getISOWeek(date);
@@ -40,6 +39,7 @@ export const UsersChart = () => {
       y: count,
     }));
   //_
+  
   return (
     <Box minHeight={"300px"}>
       <LineChart

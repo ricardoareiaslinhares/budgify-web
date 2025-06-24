@@ -50,4 +50,3 @@ export default function Login({}: LoginProps) {
     </Grid>
   );
 }
-// TODO make typography better

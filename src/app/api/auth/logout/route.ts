@@ -9,7 +9,7 @@ export async function POST() {
     path: "/",
     maxAge: 0,
     sameSite: "lax",
-    // httpOnly: true, // TODO needs to match the login
+    httpOnly: true, // TODO needs to match the login
   });
 
   return response;
