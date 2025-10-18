@@ -27,19 +27,15 @@ export const Records = <T,>({
   const offset = page * pageSize;
   const completeParams = `${params}&limit=${pageSize}&offset=${offset}`;
   const { data, error, isLoading } = useRecords(entity, completeParams);
+  console.log("data =>", data); // Delete
 
-  if (isLoading) return <Loading/>;
+  if (isLoading) return <Loading />;
   if (error || !data) return <ErrorFetch />;
 
   return (
-    <RecordsContext.Provider
-      value={{ data, entity, page, setPage, pageSize, setPageSize }}
-    >
+    <RecordsContext.Provider value={{ data, entity, page, setPage, pageSize, setPageSize }}>
       {customRender || (
-        <DataGrid<T>
-          dataGridColumnMap={dataGridColumnMap!}
-          options={dataGridOptions}
-        />
+        <DataGrid<T> dataGridColumnMap={dataGridColumnMap!} options={dataGridOptions} />
       )}
     </RecordsContext.Provider>
   );

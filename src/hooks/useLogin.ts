@@ -14,15 +14,14 @@ export const useLogin = () => {
   });
 };
 
-const login = async (loginData: {
-  email: string;
-  password: string;
-}): Promise<any> => {
+const login = async (loginData: { email: string; password: string }): Promise<any> => {
   try {
     const response = await axios.post(API_ROUTES.login.api, loginData);
-      return response.data;
+    console.log("response HERE =>", response); // Delete
+
+    return response.data;
   } catch (error) {
-      console.log("Error on useLogin", error);
-      throw error;
+    console.log("Error on useLogin", error);
+    throw error;
   }
 };

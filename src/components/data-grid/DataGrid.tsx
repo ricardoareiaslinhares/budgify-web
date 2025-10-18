@@ -14,8 +14,9 @@ type DataGridProps = {
 };
 
 export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
-  const { data, entity, page, pageSize, setPage, setPageSize} =
-    useContextRecords<T & GridValidRowModel>();
+  const { data, entity, page, pageSize, setPage, setPageSize } = useContextRecords<
+    T & GridValidRowModel
+  >();
 
   const appDialog = useContext(AppDialogContext);
   const updateRecord = useUpdateRecord(entity, "", {
@@ -25,38 +26,46 @@ export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
     queryInvalidatePrefix: entity,
   });
 
-  const deleteFn = (id: string | number) => {
-    const action = options?.extraOptions.deleteAction
-    if (!action) return
+  const deleteFn = (id: string | number, isActive: boolean) => {
+    const action = options?.extraOptions.deleteAction;
+    if (!action) return;
     appDialog?.setContent({
       title: action.title,
       description: action.description,
     });
+    const isAlreadyInThatState = isActive === false;
 
     appDialog?.setAction(() => () => {
+      if (isAlreadyInThatState) {
+        alert("The user is already deactivated");
+      }
       deleteRecord.mutate({ id: id });
     });
     appDialog?.toggleOpen();
   };
 
-  const activateFn = (id: string | number) => {
-    const action = options?.extraOptions.updateAction
-    if (!action) return
+  const activateFn = (id: string | number, isActive: boolean) => {
+    const action = options?.extraOptions.updateAction;
+    if (!action) return;
     appDialog?.setContent({
       title: action.title,
       description: action.description,
     });
 
+    const isAlreadyInThatState = isActive === true;
+
     appDialog?.setAction(() => () => {
+      console.log(isActive);
+      if (isAlreadyInThatState) {
+        alert("The user is already active");
+      }
       updateRecord.mutate({ data: action.payload, id: id });
     });
     appDialog?.toggleOpen();
   };
 
   const columnsDynamic =
-    data.length > 0
-      ? generateColumns(data[0], dataGridColumnMap, deleteFn, activateFn)
-      : [];
+    data.length > 0 ? generateColumns(data[0], dataGridColumnMap, deleteFn, activateFn) : [];
 
   const users = data.map((user) => {
     const { idUser, ...rest } = user;
@@ -73,9 +82,9 @@ export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
       paginationMode="server"
       rowCount={-1}
       paginationModel={{ page, pageSize }}
-       pageSizeOptions={[5]} 
+      pageSizeOptions={[5]}
       onPaginationModelChange={({ page: newPage, pageSize: newPageSize }) => {
-        setPage(newPage)
+        setPage(newPage);
         setPageSize(newPageSize);
       }}
       sx={{

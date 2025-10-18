@@ -6,28 +6,27 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const cookieStore = await cookies();
   const token = cookieStore.get("auth-token")?.value;
+  console.log("token =>", token); // Delete
 
-  const response = await fetch(
-    `${API_URL}${API_ROUTES.users.be}?${searchParams.toString()}`,
-    {
-      //method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await fetch(`${API_URL}${API_ROUTES.users.be}?${searchParams.toString()}`, {
+    //method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  console.log("response.ok =>", response); // Delete
 
   if (!response.ok) {
     const text = await response.text();
     return new NextResponse(text, { status: response.status });
   }
-
   const data = await response.json();
+  console.log(data);
   const responseData = NextResponse.json(data);
   return responseData;
 }
-
 
 export async function PATCH(req: Request) {
   const { searchParams } = new URL(req.url);

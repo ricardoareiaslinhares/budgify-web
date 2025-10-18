@@ -12,11 +12,11 @@ import { GridColDef } from "@mui/x-data-grid";
 export const generateColumns = <T extends Record<string, unknown>>(
   data: T,
   mapper: DataGridColumnMapType,
-  deleteFn: (idUser: number | string) => void,
-  updateFn: (idUser: number | string) => void
+  deleteFn: (idUser: number | string, isActive: boolean) => void,
+  updateFn: (idUser: number | string, isActive: boolean) => void,
 ): GridColDef[] => {
   const keys = Object.keys(data) as (keyof T)[];
-  
+
   const dataColumns = keys
     .filter((key) => !mapper[String(key)]?.hidden)
     .map((key) => {
@@ -43,10 +43,10 @@ export const generateColumns = <T extends Record<string, unknown>>(
     filterable: false,
     renderCell: (params) => (
       <>
-        <IconButton onClick={() => deleteFn(params.row.id)}>
+        <IconButton onClick={() => deleteFn(params.row.id, params.row.isActive)}>
           <Delete color="warning" />
         </IconButton>
-        <IconButton onClick={() => updateFn(params.row.id)}>
+        <IconButton onClick={() => updateFn(params.row.id, params.row.isActive)}>
           <Restore color="primary" />
         </IconButton>
       </>
