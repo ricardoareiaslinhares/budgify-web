@@ -54,12 +54,7 @@ export function LoginForm({}: LoginProps) {
         <Typography component="h1" variant="h3" mb={4}>
           Welcome
         </Typography>
-        <Box
-          component="form"
-          noValidate
-          onSubmit={handleSubmit(onSubmit)}
-          sx={{ mt: 1, mx: 4 }}
-        >
+        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, mx: 4 }}>
           <Controller
             name="email"
             control={control}
@@ -83,18 +78,29 @@ export function LoginForm({}: LoginProps) {
             name="password"
             control={control}
             defaultValue=""
-            render={({ field }) => (
-              <LabeledTextField
-                {...field}
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
+            rules={{
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters long",
+              },
+            }}
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <LabeledTextField
+                  {...field}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  error={!!error}
+                  helperText={error ? error.message : ""}
+                />
+              </>
             )}
           />
 
@@ -104,12 +110,7 @@ export function LoginForm({}: LoginProps) {
             </Typography>
           )}
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, py: 2.5 }}
-          >
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, py: 2.5 }}>
             Login
           </Button>
         </Box>
