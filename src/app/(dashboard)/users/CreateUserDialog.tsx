@@ -2,6 +2,7 @@
 
 import { GENRES } from "@/constants";
 import { UserCreate } from "@/types/entities";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   Dialog,
   DialogTitle,
@@ -18,25 +19,19 @@ import {
   FormControlLabel,
   Paper,
   Box,
+  IconButton,
+  Typography,
 } from "@mui/material";
 import { UseMutationResult } from "@tanstack/react-query";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 type CreateUserDialogProps = {
   open: boolean;
   toggle: () => void;
-  createRecordFn: UseMutationResult<
-    UserCreate,
-    void,
-    { data: UserCreate },
-    unknown
-  >;
+  createRecordFn: UseMutationResult<UserCreate, void, { data: UserCreate }, unknown>;
 };
-export const CreateUserDialog = ({
-  open,
-  toggle,
-  createRecordFn,
-}: CreateUserDialogProps) => {
+export const CreateUserDialog = ({ open, toggle, createRecordFn }: CreateUserDialogProps) => {
   const entityForm = useForm({
     defaultValues: {
       name: "budgify1",
@@ -48,6 +43,7 @@ export const CreateUserDialog = ({
     },
   });
 
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const {
     control,
     handleSubmit,
@@ -55,7 +51,7 @@ export const CreateUserDialog = ({
   } = entityForm;
 
   const onSubmit = async (formData: any) => {
-    await createRecordFn.mutateAsync({data:formData})
+    await createRecordFn.mutateAsync({ data: formData });
     toggle();
   };
 
@@ -72,12 +68,7 @@ export const CreateUserDialog = ({
                   control={control}
                   rules={{ required: "Name is required" }}
                   render={({ field }) => (
-                    <TextField
-                      label="Name"
-                      fullWidth
-                      error={!!errors.name}
-                      {...field}
-                    />
+                    <TextField label="Name" fullWidth error={!!errors.name} {...field} />
                   )}
                 />
               </Grid>
@@ -94,12 +85,7 @@ export const CreateUserDialog = ({
                     },
                   }}
                   render={({ field }) => (
-                    <TextField
-                      label="Email"
-                      fullWidth
-                      error={!!errors.email}
-                      {...field}
-                    />
+                    <TextField label="Email" fullWidth error={!!errors.email} {...field} />
                   )}
                 />
               </Grid>
@@ -157,23 +143,42 @@ export const CreateUserDialog = ({
                 />
               </Grid>
 
-              <Grid size={{ xs: 12 }}>
-                <Controller
-                  name="allowWalletWatch"
-                  control={control}
-                  render={({ field }) => (
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={field.value}
-                          onChange={(e) => field.onChange(e.target.checked)}
-                        />
-                      }
-                      label="Allow Wallet Watch"
-                    />
-                  )}
-                />
-              </Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  mb: showAdvanced ? 1 : 0,
+                }}
+                onClick={() => setShowAdvanced((prev) => !prev)}
+              >
+                <Typography variant="subtitle1" sx={{ mr: 1 }}>
+                  {showAdvanced ? "Hide advanced features" : "Show advanced features"}
+                </Typography>
+                <IconButton size="small">
+                  {showAdvanced ? <ExpandLess /> : <ExpandMore />}
+                </IconButton>
+              </Box>
+
+              {showAdvanced && (
+                <Grid size={{ xs: 12 }}>
+                  <Controller
+                    name="allowWalletWatch"
+                    control={control}
+                    render={({ field }) => (
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={field.value}
+                            onChange={(e) => field.onChange(e.target.checked)}
+                          />
+                        }
+                        label="Allow Wallet Watch"
+                      />
+                    )}
+                  />
+                </Grid>
+              )}
             </Grid>
           </Paper>
         </DialogContent>
