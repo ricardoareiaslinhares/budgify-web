@@ -83,7 +83,7 @@ export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
       paginationMode="server"
       rowCount={-1}
       paginationModel={{ page, pageSize }}
-      pageSizeOptions={[5]}
+      pageSizeOptions={[30]}
       onPaginationModelChange={({ page: newPage, pageSize: newPageSize }) => {
         setPage(newPage);
         setPageSize(newPageSize);
