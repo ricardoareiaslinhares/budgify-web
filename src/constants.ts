@@ -4,7 +4,7 @@ export const DRAWER_WIDTH = 240;
 export const GENRES = [
   { label: "Male", value: 0 },
   { label: "Female", value: 1 },
-  { label: "Other", value: -1 },
+  //{ label: "Other", value: -1 },
 ];
 
 export const PAGE_ROUTES = {
