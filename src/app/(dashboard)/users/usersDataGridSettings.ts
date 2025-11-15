@@ -2,7 +2,7 @@ import { GENRES } from "@/constants";
 import { DataGridColumnMapType, DataGridOptionsType } from "@/types/dataGrid";
 
 export const usersColumnMap: DataGridColumnMapType = {
-/*   idUser: {
+  /*   idUser: {
     hidden: true,
   },
   idUserGroup: {
@@ -10,6 +10,10 @@ export const usersColumnMap: DataGridColumnMapType = {
   }, */
   profilePic: {
     hidden: true,
+  },
+  allowWalletWatch: {
+    headerName: "Wallet Watch",
+    field: "allowWalletWatch",
   },
   genre: {
     headerName: "Genre",
