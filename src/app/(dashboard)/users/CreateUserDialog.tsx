@@ -39,7 +39,7 @@ export const CreateUserDialog = ({ open, toggle, createRecordFn }: CreateUserDia
       password: undefined,
       dateOfBirth: "2024-12-01",
       genre: 0,
-      allowWalletWatch: true,
+      allowWalletWatch: false,
     },
   });
 
