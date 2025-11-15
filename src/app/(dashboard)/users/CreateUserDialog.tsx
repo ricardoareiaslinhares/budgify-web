@@ -56,7 +56,7 @@ export const CreateUserDialog = ({ open, toggle, createRecordFn }: CreateUserDia
   };
 
   return (
-    <Dialog open={open} onClose={toggle} maxWidth="sm" fullWidth>
+    <Dialog data-testid="create-user-dialog" open={open} onClose={toggle} maxWidth="sm" fullWidth>
       <DialogTitle>Create User</DialogTitle>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
