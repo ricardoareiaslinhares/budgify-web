@@ -77,7 +77,7 @@ export const DataGrid = <T,>({ dataGridColumnMap, options }: DataGridProps) => {
 
   return (
     <MUIDataGrid
-      data-test="data-grid"
+      data-testid="data-grid"
       rows={users}
       columns={columnsDynamic}
       paginationMode="server"

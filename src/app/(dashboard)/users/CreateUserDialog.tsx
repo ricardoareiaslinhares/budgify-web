@@ -144,7 +144,7 @@ export const CreateUserDialog = ({ open, toggle, createRecordFn }: CreateUserDia
               </Grid>
 
               <Box
-                data-test="create-user-dropdown-advanced-features"
+                data-testid="create-user-dropdown-advanced-features"
                 sx={{
                   display: "flex",
                   alignItems: "center",

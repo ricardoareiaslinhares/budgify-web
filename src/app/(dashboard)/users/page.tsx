@@ -22,7 +22,7 @@ export default function Users() {
       <BodyWraper
         sx={{ minHeight: "200px" }}
         customHeaderRightSide={
-          <Button data-test="create-user-button" onClick={toggleOpen} variant="contained">
+          <Button data-testid="create-user-button" onClick={toggleOpen} variant="contained">
             Create User
           </Button>
         }

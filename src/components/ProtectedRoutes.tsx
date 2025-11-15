@@ -20,7 +20,7 @@ export const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
   }, [isAuthenticated, isLoading]);
 
   if (isLoading || !isAuthenticated || !user.name) {
-    return <LinearProgress data-test="loading-progress" />;
+    return <LinearProgress data-testid="loading-progress" />;
   }
 
   return <Navigation userName={user?.name}>{children}</Navigation>;

@@ -3,7 +3,7 @@ import { Box, CircularProgress } from "@mui/material";
 export const Loading = () => {
   return (
     <Box
-      data-test="loading-spinner"
+      data-testid="loading-spinner"
       sx={{
         display: "flex",
         justifyContent: "center",
