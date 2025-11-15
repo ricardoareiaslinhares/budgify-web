@@ -2,7 +2,6 @@
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Loading } from "./Loading";
 import { LinearProgress } from "@mui/material";
 import { Navigation } from "./navigation/Navigation";
 
@@ -21,7 +20,7 @@ export const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
   }, [isAuthenticated, isLoading]);
 
   if (isLoading || !isAuthenticated || !user.name) {
-    return <LinearProgress />;
+    return <LinearProgress data-test="loading-progress" />;
   }
 
   return <Navigation userName={user?.name}>{children}</Navigation>;
