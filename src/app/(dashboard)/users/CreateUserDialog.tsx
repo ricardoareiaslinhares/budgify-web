@@ -37,7 +37,7 @@ export const CreateUserDialog = ({ open, toggle, createRecordFn }: CreateUserDia
       name: "budgify1",
       email: "budgify1@teste.com",
       password: undefined,
-      dateOfBirth: "2024-12-01",
+      dateOfBirth: "",
       genre: 0,
       allowWalletWatch: false,
     },
